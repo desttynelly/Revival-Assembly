@@ -82,6 +82,9 @@ header nav ul li a:hover{
 header nav .joinbtn{
     margin-top: -30px;
     margin-left: 83%;
+    margin: auto;
+    width: 90px;
+    background-color: blue;
 }
 header nav .joinbtn button{
     padding: 15px 30px;
@@ -313,7 +316,7 @@ header nav .joinbtn button:hover{
     header nav .joinbtn{
         margin-top: 10px;
         margin-left: 0%;
-        width: 300px;
+        width: 90px;
         align-self: center;
         justify-self: center;
         margin: auto;
