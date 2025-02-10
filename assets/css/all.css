@@ -316,6 +316,7 @@ header nav .joinbtn button:hover{
         margin-left: 0%;
         align-self: center;
         justify-self: center;
+        margin: auto;
     }
 
 
