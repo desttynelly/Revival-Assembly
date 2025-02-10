@@ -153,9 +153,9 @@
 
 
 .service{
-    margin-top: 50px;
     background-color: #fff;
     margin: auto;
+    margin-top: 50px;
 }
 .service .head{
     padding-top: 50px;
@@ -183,7 +183,6 @@
     flex-wrap: wrap;
     align-items: center;
     align-self: center;
-    background-color: red;
     width: 70%;
     justify-content: space-between;
     margin: auto;
