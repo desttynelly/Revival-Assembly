@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/Revival created logo.png">
+    <link rel="stylesheet" href="/css/testimonies.css">
+    <link rel="stylesheet" href="/css/all.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Revival Abuja</title>
+</head>
+<body>
+    
+
+    <header>
+        <div class="logo">
+          <a href="/"> <abbr title="Revival Assembly"><img src="/images/Revival created logo.png" alt=""></abbr> </a>
+        </div>
+        <div class="ham">
+           <abbr title="Open Hamburger"><img src="/images/hamburger-svgrepo-com.png" alt="" class="hamm"></abbr> 
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Sermon">Sermons</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a class="onpage" href="/testimonies">Stories/Testimonies</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <div class="joinbtn">
+                
+            <button class="give">Give</button>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+
+
+
+
+
+    <div class="giving">
+        <div class="close">
+            <i class="fa fa-close"></i>
+        </div>
+        <form action="">
+            <label for="name">full Name:</label>
+            <input type="text" name="name" id="name" placeholder="fullname"><br>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="email"><br>
+
+            <label for="phonenumber">Phone Number (optional)</label>
+            <input type="tel" name="phonenumber" id="number" placeholder="phone number"><br>
+
+            <label for="type">Giving Type</label>
+            <select name="givingtype" id="type" onchange="changeBgColor()">
+                <option value="">--select your giving type</option>
+                <option value="offering">Offering</option>
+                <option value="tithe">Tithe</option>
+                <option value="seed"> Seed</option>
+            </select> <br>
+
+            <section class="thanks">
+                <select name="choose" id="choose">
+                    <option value="">--To where</option>
+                    <option value="S Pastore">Pastor</option>
+                    <option value="orphange">Orphange</option>
+                    <option value="widows">Widows</option>
+                </select>
+            </section>
+
+            <button class="send" type="submit">Send</button>
+        </form>
+    </div>
+
+
+
+    <div class="testi">
+
+        <div class="testtop">
+              <div class="test-top">
+            <h1>Testimonies</h1>
+            <p><a href="/contact">Contact us</a> today to share your testimonies, with us and lets thanks God together</p>
+        </div>
+        </div>
+      
+        
+        <div class="d-testi">
+            <div class="testi-card">
+                <p class="name">James Mike</p>
+                <p class="title">Adverted accident</p>
+                <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis magni placeat modi tempora nam ullam fugiat facere ad accusamus non, quo aperiam tempore labore, eos totam, eaque debitis obcaecati fugit.</p>
+                <a href="" class="see">See more</a>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    <div class="footer">
+
+        <div class="top">
+            <p class="address">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam amet vero autem modi corrupti eum dolorum 
+            </p>
+             <div class="aa">
+                  <a href="tel:08062295161">08062295161</a>
+            <a href="mailto:pastorobclem@gmail.com">|   pastorobclem@gmail.com</a>
+            </div>
+        </div>
+        <div class="ar">
+            <p>&copy;2025 Revival Assembly Abuja. All Right Reserved. Site designed by <a href="">Destty Nelly</a></p>
+        </div>
+
+        <div class="social">
+            <a href=""><i class="fa fa-facebook"></i></a>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+function show(){
+          document.addEventListener("DOMContentLoaded", function() {
+            const TestData = JSON.parse(localStorage.getItem("testi"));
+        
+            if (TestData) {
+                const sermonContainer = document.querySelector(".d-testi"); // The parent div where we'll insert the sermon
+        
+                const sermonDiv = document.createElement("div");
+                sermonDiv.classList.add("testi-card");
+        
+                sermonDiv.innerHTML = `
+                
+                        <p class="name">${TestData.pname}</p>
+                        <p class="title">${TestData.ttitle}</p>
+                        <p class="small">${TestData.tinfo}</p>
+                       <a href="" class="see">See More</a>
+                `;
+                console.log(TestData)
+        
+                sermonContainer.appendChild(TestData);
+            } else {
+                console.log("No sermon data found!");
+            }
+        });
+        
+        
+}
+
+show()
+  
+            </script>
+   
+
+
+
+<script src="/js/all.js"></script>
+</body>
+</html>

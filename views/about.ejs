@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/Revival created logo.png">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Revival Abuja</title>
+</head>
+<body>
+    
+
+    <header>
+        <div class="logo">
+          <a href="/"> <abbr title="Revival Assembly"><img src="/images/Revival created logo.png" alt=""></abbr> </a>
+        </div>
+        <div class="ham">
+           <abbr title="Open Hamburger"><img src="/images/hamburger-svgrepo-com.png" alt="" class="hamm"></abbr> 
+        </div>
+        <nav>
+            <ul>
+                <li><a  href="/">Home</a></li>
+                <li><a href="/Sermon">Sermons</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/testimonies">Stories/Testimonies</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a class="onpage" href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <div class="joinbtn">
+                
+            <button class="give">Give</button>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+    <div class="giving">
+        <div class="close">
+            <i class="fa fa-close"></i>
+        </div>
+        <form action="">
+            <label for="name">full Name:</label>
+            <input type="text" name="name" id="name" placeholder="fullname"><br>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="email"><br>
+
+            <label for="phonenumber">Phone Number (optional)</label>
+            <input type="tel" name="phonenumber" id="number" placeholder="phone number"><br>
+
+            <label for="type">Giving Type</label>
+            <select name="givingtype" id="type" onchange="changeBgColor()">
+                <option value="">--select your giving type</option>
+                <option value="offering">Offering</option>
+                <option value="tithe">Tithe</option>
+                <option value="seed"> Seed</option>
+            </select> <br>
+
+            <section class="thanks">
+                <select name="choose" id="choose">
+                    <option value="">--To where</option>
+                    <option value="S Pastore">Pastor</option>
+                    <option value="orphange">Orphange</option>
+                    <option value="widows">Widows</option>
+                </select>
+            </section>
+
+            <button class="send" type="submit">Send</button>
+        </form>
+    </div>
+
+
+
+
+<!-- 
+    <div class="about">
+
+
+        <p class="aboutheadp">Revival Assembly</p>
+
+
+
+        <div class="ourimg1">
+            <img src="/images/81HG2jJ0ZrL._SL1500_.jpg" alt="">
+            <img src="/images/81HG2jJ0ZrL._SL1500_.jpg" alt="">
+            <img src="/images/81HG2jJ0ZrL._SL1500_.jpg" alt="">
+        </div>
+
+
+        <div class="small-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, veniam. Et velit, magnam quaerat ex animi quia, labore vel natus ipsum omnis corporis, praesentium cum quibusdam nam voluptate eligendi hic?
+        </div>
+
+    </div> -->
+
+
+
+     <!-- Hero Section -->
+     <section class="hero">
+        <div class="overlay">
+            <h1>Welcome to Our Church</h1>
+            <p>A place of faith, hope, and love. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ad est repudiandae, aspernatur assumenda animi consequatur veniam nulla ex nisi debitis dignissimos voluptatum nostrum eum necessitatibus iusto adipisci eaque obcaecati!</p>
+        </div>
+        <!-- <div class="churchi">
+            <img src="/images/panorama-of-church-interior.png" alt="">
+        </div> -->
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="content">
+        <h2>Our Mission & Vision</h2>
+        <p>To spread the love of Christ and create a community where everyone feels welcomed and valued.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ea voluptatibus veniam vitae explicabo blanditiis, ducimus beatae dolorum rerum pariatur molestias earum ipsam eius ut repellendus magni. Rem, sed adipisci!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates totam itaque dolorum sed voluptatum similique quas accusamus temporibus ad officiis? Et optio reprehenderit vel reiciendis quisquam excepturi. Repellat, quia ducimus.
+        </p>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="team">
+        <h2>Meet Our Leaders</h2>
+        <div class="leaders">
+                <div class="leader">
+                    <img src="/images/microsoft-365-7mBictB_urk-unsplash.jpg" alt="mike johnson">
+                    <h3>Mike johnson</h3>
+                    <p>Resident Pastor</p>
+                </div>
+
+                <div class="leader">
+                    <img src="/images/microsoft-365-7mBictB_urk-unsplash.jpg" alt="mike johnson">
+                    <h3>Mike johnson</h3>
+                    <p>Resident Pastor</p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Service Times -->
+    <!-- <section class="services">
+        <h2>Join Us for Worship</h2>
+        <p>Sundays at 9:00 AM & 11:00 AM | Wednesdays at 7:00 PM</p>
+    </section> -->
+
+    <div class="service">
+        <div class="head">
+            <h2 class="headdp">Services</h2>
+            <p class="boddyp">At Revival Assembly Abuja, our services have two unique expressions of worship, with the same, powerful, Bible-centric teaching.</p>
+        </div>
+        <div class="bodyt">
+            <section class="serone">
+                <p class="seheadd">Sunday Service</p>
+
+                <img src="/images/panorama-of-church-interior.png" alt="">
+
+                <section class="btt">
+                    <p>The Word</p>
+                    <p>8:30am</p>
+                </section>
+            </section>
+
+            <section class="serone">
+                <p class="seheadd">Wednesday Service</p>
+
+                <img src="/images/panorama-of-church-interior.png" alt="">
+
+                <section class="btt">
+                    <p>Bible Study</p>
+                    <p>8:30am</p>
+                </section>
+            </section>
+        </div>
+
+           
+        
+    </div>
+
+    <!-- Get Involved -->
+    <section class="get-involved">
+        <h2>Be a Part of Our Family</h2>
+        <p>Join our community and serve in different ministries.</p>
+        <a href="/contact" class="btn">Get Involved</a>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="footer">
+
+        <div class="top">
+            <p class="address">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam amet vero autem modi corrupti eum dolorum 
+            </p>
+             <div class="aa">
+                  <a href="tel:08062295161">08062295161</a>
+            <a href="mailto:pastorobclem@gmail.com">|   pastorobclem@gmail.com</a>
+            </div>
+        </div>
+        <div class="ar">
+            <p>&copy;2025 Revival Assembly Abuja. All Right Reserved. Site designed by <a href="">Destty Nelly</a></p>
+        </div>
+
+        <div class="social">
+            <a href=""><i class="fa fa-facebook"></i></a>
+        </div>
+    </div>
+
+
+
+   
+
+
+
+<script src="/js/all.js"></script>
+</body>
+</html>

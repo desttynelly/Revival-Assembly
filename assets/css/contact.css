@@ -1,0 +1,103 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+header{
+    margin-top: -150px;
+}
+
+.giving{
+    margin-top: -150px;
+}
+
+
+.contact{
+    margin-top: 150px;
+}
+
+
+
+
+.contact .d-contact-form{
+    padding: 30px 60px;
+    width: 60%;
+    background-color: #fff;
+    justify-self: center;
+}
+.contact .d-contact-form .headdp{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+}
+.contact .d-contact-form form{
+    width: 80%;
+    align-items: center;
+    justify-self: center;
+}
+.contact .d-contact-form form label{
+    font-size: 14px;
+    margin-bottom: 60px;
+}
+.contact .d-contact-form form input,
+.contact .d-contact-form form textarea,
+.contact .d-contact-form form select{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    text-indent: 10px;
+    margin-bottom: 20px;
+    outline: none;
+}
+.contact .d-contact-form form textarea{
+    height: 120px;
+    padding: 10px;
+    width: 96.5%;
+}
+.contact .d-contact-form form .btn{
+    background-color: red;
+    width: 150px;
+    height: 40px;
+    justify-self: center;
+}
+.contact .d-contact-form form .btn button{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+.contact-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.contact-info p {
+    margin: 5px 0;
+}
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+}

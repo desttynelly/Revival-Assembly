@@ -1,0 +1,166 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.giving{
+    margin-top: -150px;
+}
+
+
+header{
+    margin-top: -150px;
+}
+
+
+
+
+.testi{
+    margin-top: 150px;
+}
+.testi .testtop{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background-image: url(/images/91bDpcoth9L._SL1500_.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 100px;
+    overflow: hidden;
+
+}
+.testi .test-top{
+    line-height: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding-top: 80px;
+    background-color: #000000bd;
+}
+.testi .test-top h1{
+    font-size: 50px;
+}
+.testi .test-top p{
+    font-size: 16px;
+}
+.testi .test-top p a{
+    color: #fff;
+}
+
+.testi .d-testi{
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    justify-content: space-evenly;
+}
+
+.testi .d-testi .testi-card{
+    width: 300px;
+}
+.testi .d-testi .testi-card .name{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.testi .d-testi .testi-card .title{
+    font-size: 20px;
+    margin: 0px;
+    font-weight: 600;
+}
+.testi .d-testi .testi-card .small{
+    font-size: 13px;
+    max-height: 150px;
+    overflow: hidden;
+}
+.testi .d-testi .testi-card .see{
+    font-size: 12px;
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 500px){
+
+
+
+    .testi .test-top h1{
+        font-size: 30px;
+    }
+    .testi .test-top p{
+        font-size: 12px;
+    }
+    .testi .test-top p a{
+        color: #fff;
+    }
+}

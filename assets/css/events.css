@@ -1,0 +1,320 @@
+
+
+:root{
+    --black: #000;
+    --white: #fff;
+    --red: #ff0000;
+    --bg: #d9d9d998;
+    --poppins: "poppins", sans-serif;
+    --main-color: #ff9000;
+    --shadow: 1px 2px 20px -8px black;
+}
+
+header{
+    margin-top: -160px;
+}
+
+
+.giving{
+    margin-top: -160px;
+}
+
+
+.events{
+    margin-top: 160px;
+}
+
+
+
+.events .d-events{
+    width: 100%;
+}
+.events .d-events .eventstop{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background-image: url(/images/91bDpcoth9L._SL1500_.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 100px;
+
+}
+.events .d-events .d-eventheadp{
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-color: #000000bd;
+    font-size: 50px;
+    font-weight: 600;
+    margin: 0px;
+    margin-left: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.events .d-events .realevent{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.events .d-events .realevent a{
+    color: var(--black);
+}
+.events .d-events .realevent div{
+    background-color: var(--bg);
+    color: var(--black);
+    width: 30%;
+    padding: 1%;
+    margin-left: 1%;
+    text-align: center;
+}
+.events .d-events .realevent div img{
+    width: 100%;
+    height: 200px;
+}
+.events .d-events .realevent div .eventheadp{
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.events .d-events .realevent div .bodyp{
+    height: 120px;
+    margin-top: 50px;
+}
+.events .d-events .realevent div .bodyp .eventbodyp{
+    font-size: 13px;
+    max-height: 100px;
+    width: 100%;
+    text-align: start;
+    overflow: hidden;
+}
+.events .d-events .realevent .d-event .btn{
+    width: 120px;
+    height: 40px;
+    font-size: 13px;
+    justify-self: center;
+}
+.events .d-events .realevent .d-event .btn button{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 200px){
+
+
+
+
+.events .d-events .d-eventheadp{
+    font-size: 30px;
+    align-self: center;
+    justify-self: center;
+    font-weight: 600;
+    margin-left: 0%;
+}
+.events .d-events .realevent{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: block;
+    margin-bottom: 20px;
+}
+.events .d-events .realevent div{
+    background-color: var(--bg);
+    color: var(--black);
+    width: 90%;
+    padding: 3%;
+    margin-left: 1%;
+    margin-bottom: 20px;
+}
+.events .d-events .realevent div img{
+    align-items: center;
+    justify-content: center;
+}
+.events .d-events .realevent div .eventheadp{
+    font-size: 15px;
+    font-weight: 600;
+    align-self: center;
+    justify-self: center;
+}
+.events .d-events .realevent div .bodyp{
+    height: 120px;
+    margin-top: 10px;
+}
+.events .d-events .realevent div .bodyp .eventbodyp{
+    font-size: 13px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+}
+
+
+
+
+@media (min-width: 500px){
+
+
+    .events .d-events .realevent{
+        width: 60%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: block;
+        margin-bottom: 20px;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .events .d-events .realevent div{
+        background-color: var(--bg);
+        color: var(--black);
+        width: 93%;
+        padding: 3%;
+        margin-left: 0%;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 800px){
+
+  
+    
+    
+    
+    
+    
+    
+    .events .d-events{
+        width: 100%;
+    }
+    .events .d-events .d-eventheadp{
+        font-size: 50px;
+        font-weight: 600;
+        margin-left: 0%;
+    }
+    
+    .events .d-events .realevent{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .events .d-events .realevent a{
+        color: var(--black);
+    }
+    .events .d-events .realevent div{
+        background-color: var(--bg);
+        color: var(--black);
+        width: 45%;
+        padding: 1%;
+        margin-left: 1%;
+    }
+    .events .d-events .realevent div img{
+        width: 100%;
+        height: 200px;
+    }
+    .events .d-events .realevent div .eventheadp{
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .events .d-events .realevent div .bodyp{
+        height: 120px;
+        margin-top: 20px;
+    }
+    .events .d-events .realevent div .bodyp .eventbodyp{
+        font-size: 13px;
+        max-height: 100px;
+        overflow: hidden;
+    }
+    .events .d-events .realevent .d-event a{
+        color: var(--red);
+        font-size: 13px;
+    }
+    .events .d-events .realevent a{
+        color: var(--black);
+    }
+    a{
+        color: var(--black);
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1000px){
+
+
+   
+
+    .events .d-events .realevent{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .events .d-events .realevent a{
+        color: var(--black);
+    }
+    .events .d-events .realevent div{
+        background-color: var(--bg);
+        color: var(--black);
+        width: 30%;
+        padding: 1%;
+        margin-left: 1%;
+    }
+    .events .d-events .realevent div .eventheadp{
+        font-size: 25px;
+        font-weight: 600;
+    }
+   
+}
+
