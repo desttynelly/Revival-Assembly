@@ -137,6 +137,7 @@ header nav .joinbtn button:hover{
     height: 80%;
     min-height: 300px;
     align-content: center;
+    margin: auto;
     justify-items: center;
 }
 .giving form .close{
