@@ -345,6 +345,33 @@ header nav .joinbtn button:hover{
     .ham{
         margin-left: 80%;
     }
+    .footer .top .address{
+        font-size: 16px;
+    }
+    .footer .top .aa a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+@media (max-width: 400px){
+    .ham{
+        margin-left: 80%;
+    }
+    .footer .top .address{
+        font-size: 16px;
+    }
+    .footer .top .aa a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+    }
 }
 
 

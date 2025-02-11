@@ -63,12 +63,15 @@ header{
 .prev-serm .headdp{
     font-size: 30px;
     font-weight: 600;
+    color: #fff;
 }
 
 .prev-serm .d-sermon{
     display: flex;
     height: 400px;
     margin-bottom: 30px;
+    color: #fff;
+    margin: auto;
 }
 .prev-serm .d-sermon .d-img{
     background-color: white;
