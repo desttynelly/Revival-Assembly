@@ -59,6 +59,7 @@ header{
     margin-top: 100px;
     width: 95%;
     justify-self: center;
+    margin: auto;
 }
 .prev-serm .headdp{
     font-size: 30px;
@@ -144,6 +145,10 @@ header{
         background-repeat: no-repeat; /* Prevents tiling */
         
         transition: all 0.3s ease-in-out;
+    }
+
+    .prev-serm{
+        margin: auto;
     }
 
     .prev-serm .serm{
