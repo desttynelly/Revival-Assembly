@@ -69,10 +69,15 @@ header{
     flex-wrap: wrap;
     justify-self: center;
     justify-content: space-evenly;
+    margin: auto;
 }
 
 .testi .d-testi .testi-card{
     width: 300px;
+    background-color: #ffffffbd;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 .testi .d-testi .testi-card .name{
     font-size: 16px;
