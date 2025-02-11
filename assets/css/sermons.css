@@ -65,13 +65,15 @@ header{
     font-weight: 600;
     color: #fff;
 }
-
+.prev-serm .serm{
+    margin: auto;
+}
 .prev-serm .d-sermon{
     display: flex;
     height: 400px;
+    margin: auto;
     margin-bottom: 30px;
     color: #fff;
-    margin: auto;
 }
 .prev-serm .d-sermon .d-img{
     background-color: white;
@@ -144,9 +146,14 @@ header{
         transition: all 0.3s ease-in-out;
     }
 
+    .prev-serm .serm{
+        margin: auto;
+    }
+
     .prev-serm .d-sermon{
         display: block;
         height: auto;
+        margin: auto;
         margin-bottom: 30px;
         text-align: center;
     }
