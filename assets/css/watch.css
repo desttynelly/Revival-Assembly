@@ -106,19 +106,25 @@ header .nav ul li a{
     }
 }
 
+header .icons{
+    display: flex;
+    flex-wrap: wrap;
+}
 header .icons a{
     color: #000;
 }
-header .icons i{
+header .icons i {
     width: 50px;
     height: 50px;
-    align-content: center;
-    text-align: center;
-    border-radius: 50px;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    border-radius: 50%;
     font-size: 20px;
     background-color: #0000003f;
     cursor: pointer;
 }
+
 header .icons .fa-person.active{
     background-color: #fff;
 }
@@ -402,7 +408,7 @@ header .icons .fa-bell{
 
 
 
-.cart .pickiamount,
+/* .cart .pickiamount,
 .cart .pickiamount2,
 .cart .pickiamount3,
 .cart .pickiamount4{
@@ -410,7 +416,18 @@ header .icons .fa-bell{
     justify-self: end;
     transform: translateY(-70px);
     margin-right: 50px;
+} */
+
+.cart .pickiamount,
+.cart .pickiamount2,
+.cart .pickiamount3,
+.cart .pickiamount4 {
+    display: none;
+    transform: translateY(-70px);
+    margin-left: auto; /* Pushes element to the end */
+    margin-right: 50px;
 }
+
 .cart .pickiamount.active,
 .cart .pickiamount2.active,
 .cart .pickiamount3.active,
