@@ -1,6 +1,7 @@
 
 *{
     font-family: 'poppins', sans-serif;
+    user-select: none;
 }
 
 body{
@@ -597,8 +598,9 @@ header .icons .fa-bell{
         display: none;
     }
     .nav2{
-        display: none;
-        justify-items: center;
+        background-color: red;
+        display: flex;
+        justify-content: center;
         width: 100%;
         margin: auto;
         margin-top: 80px;
