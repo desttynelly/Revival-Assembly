@@ -423,6 +423,7 @@ header .icons .fa-bell{
 .cart .pickiamount3,
 .cart .pickiamount4 {
     display: none;
+    width: 89px;
     transform: translateY(-70px);
     margin-left: auto; /* Pushes element to the end */
     margin-right: 50px;
@@ -476,9 +477,10 @@ header .icons .fa-bell{
 .cart .rotate div{
     width: 50px;
     height: 50px;
+    display: flex;
     border-radius: 50px;
-    align-content: center;
-    text-align: center;
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
     background-color: #7271717d;
     margin-bottom: 10px;
 }
