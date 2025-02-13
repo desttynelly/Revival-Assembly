@@ -160,9 +160,11 @@ header .icons .fa-bell{
     height: 99.7%;
     width: 24.84%;
     /* border: 1px solid black; */
+    display: grid;
+    flex-wrap: wrap;
     user-select: none;
-    justify-items: center;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease-in-out;
 }
 
@@ -226,6 +228,7 @@ header .icons .fa-bell{
     width: 70%;
     max-width: 500px;
     display: none;
+    margin: auto;
 }
 
 
@@ -306,8 +309,9 @@ header .icons .fa-bell{
 
 
 .cart  .d-carts .texts{
-    width: auto;
-    margin: 0px;
+    background-color: red;
+    width: 160px;
+    margin: auto;
     line-height: 10px;
 }
 
@@ -598,7 +602,6 @@ header .icons .fa-bell{
         display: none;
     }
     .nav2{
-        background-color: red;
         display: flex;
         justify-content: center;
         width: 100%;
