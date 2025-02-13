@@ -229,7 +229,6 @@ header .icons .fa-bell{
     max-width: 500px;
     display: none;
     margin: auto;
-    background-color: red;
 }
 
 
@@ -709,6 +708,38 @@ header .icons .fa-bell{
 }
 
 
+
+
+
+@media (max-width: 430px){
+
+    .cart  .d-carts .cimmg1.open{
+        display: flex;
+        margin: auto;
+        margin-left: 8%;
+        width: 70%;
+        max-width: 300px;
+        justify-self: center;
+        margin-top: -250px;
+    }
+    .cart .d-carts .price,
+    .cart .d-carts .price2,
+    .cart .d-carts .price3,
+    .cart .d-carts .price4{
+        margin-left: 50%;
+        transform: translateY(-180px);
+    }
+
+
+    .cart .pickiamount,
+    .cart .pickiamount2,
+    .cart .pickiamount3,
+    .cart .pickiamount4{
+        margin-left: 45%;
+        transform: translateY(-150px);
+    }
+
+}
 
 
 
