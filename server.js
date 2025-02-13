@@ -78,6 +78,11 @@ app.get('/testing1',(req,res)=>{
 });
 
 
+app.get('/watch',(req,res)=>{
+  res.render('watch')
+});
+
+
 
 
 app.get('/admin/admin',(req,res)=>{
