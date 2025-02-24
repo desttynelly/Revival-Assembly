@@ -52,7 +52,7 @@
 
     <div class="giving">
         
-        <form action="http://localhost:5500/api/auth/give" method="post" >
+        <form >
 
             <div class="close">
                 <i class="fa fa-close"></i>
@@ -88,9 +88,11 @@
                 </select>
             </section>
 
-            <button class="send" type="submit">Send</button>
+            <button class="send" type="button" onclick="payWithPaystack()">Send</button>
         </form>
     </div>
+
+   
 
 
 
@@ -229,7 +231,13 @@
 </div>
 
 
-<script src="/js/all.js"></script>
+
+ <script src="/js/giveo.js"></script>
+    <script src="/js/all.js"></script>
+   
+    
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
    
 </body>
 </html>

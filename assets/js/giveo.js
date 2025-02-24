@@ -1,4 +1,4 @@
-<script src="https://js.paystack.co/v1/inline.js"></script>
+
 
     function payWithPaystack() {
         // Get form data
@@ -10,20 +10,19 @@
         let choose = document.getElementById("choose").value;
 
         // Validate inputs
-        if (!name || !email || !amount || givingtype === "empty" || choose === "Empty") {
-            alert("Please fill in all required fields.");
-            return;
+        if (!name || !email || !amount || givingtype || choose) {
+          
         }
 
         let handler = PaystackPop.setup({
-            key: 'your-paystack-public-key', // Replace with your Paystack public key
+            key: 'pk_test_a174f4bbd7c96ddafef3066dc671345cbd14c0f4', // Replace with your Paystack public key
             email: email,
             amount: amount * 100, // Convert to kobo
             currency: "NGN",
             ref: 'TX-' + Math.floor(Math.random() * 1000000000 + 1), // Unique transaction reference
             callback: function(response) {
                 // Send form data to the backend after successful payment
-                fetch("http://localhost:5500/api/auth/give", {
+                fetch("/api/auth/give", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -40,15 +39,15 @@
                 .then(data => {
                     if (data.status === "Success") {
                         alert("Payment successful! Data saved.");
-                        window.location.reload();
+                        window.location.href = window.location.href; // Navigate back to the same page
                     } else {
                         alert("Data saving failed: " + data.message);
                     }
                 })
                 .catch(error => {
-                    console.error("Error:", error);
-                    alert("Something went wrong!");
+                    window.location.href = window.location.href; // Navigate back to the same page
                 });
+
             },
             onClose: function() {
                 alert("Transaction was not completed.");
@@ -57,4 +56,3 @@
 
         handler.openIframe(); // Open Paystack popup
     }
-
