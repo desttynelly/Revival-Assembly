@@ -82,7 +82,7 @@ header{
     max-width: 600px;
     height: 400px;
 }
-.prev-serm .d-sermon .d-img iframe{
+.prev-serm .d-sermon .d-img img{
     width: 100%;
     height: 100%;
     background-size: cover;

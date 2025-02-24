@@ -1,0 +1,129 @@
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+header{
+    z-index: 9999;
+    position: fixed;
+}
+
+.into{
+    margin-top: -100px;
+    width: 100%;
+    height: 105.5vh;
+    background: radial-gradient(#ff0000df 10%, #ff9000 70%);
+    background-size: cover;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+.into.orange{
+    background: none;
+    background: radial-gradient(#ff0000df 10%, #ff9000 70%);
+}
+.into.red{
+    background: none;
+    background: radial-gradient(#ff9d00b9 0%, red 90%);
+}
+.into.green{
+    background: none;
+    background: radial-gradient(#ff0000df 10%, green 70%);
+}
+
+
+.nav{
+    display: block;
+}
+
+.lists{
+    z-index: 99;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100px);
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 60px;
+}
+.lists p{
+    cursor: pointer;
+}
+
+
+.roll1{
+    width: 100%;
+    max-width: 1200px;
+    height: 1000px;
+    /* height: 150%; */
+    /* border: 1px solid #fff; */
+    margin: auto;
+    background: none;
+    transform: translateY(10vh);
+}
+
+.roll1 img{
+    width: 100%;
+    height: 100%;
+}
+
+.roll1 .roll2{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    margin-top: -900px;
+}
+.roll2 img{
+    width: 100%;
+    height: 100%;
+
+}
+
+.roll1 .fruits{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    margin-top: -900px;
+}
+.fruits img{
+    width: 100%;
+    height: 100%;
+
+}
+.fruits .orangeimg{
+    display: block;
+    animation: fades 0.5s;
+}
+.fruits .appleimg{
+    display: none;
+}
+.fruits .waterimg{
+    display: none;
+}
+
+
+.fruits .orangeimg.active{
+    display: none;
+}
+.fruits .appleimg.active,
+.fruits .waterimg.active{
+    display: block;
+    animation: fades 0.5s;
+}
+
+
+@keyframes fades{
+    0%{
+        opacity: 0;
+        transform: rotateZ(80deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotateZ(0deg);
+    }
+}

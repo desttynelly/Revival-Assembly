@@ -2,14 +2,26 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
-// const userRoutes = require('./routes/userroutes');
+const userRoutes = require('./routes/userroutes');
 const bodyparser = require('body-parser');
+const session = require("express-session")
 const cors = require("cors")
 
 dotenv.config();
 const app = express();
 
 // mongoose.connect(process.env.MONGODB_CONNECTION).then(()=>{console.log("Database Connected")}).catch((err)=>{console.log(err)});
+
+mongoose.connect(process.env.MONGODB_CONNECTION).then(()=>{console.log("Database Connected")}).catch((err)=>{console.log(err)});
+app.use(express.json()); // For parsing JSON body
+app.use(session({
+    secret: 'Dien', // Replace with your own secret
+    resave: false,
+    saveUninitialized: true,
+    store: "",
+    cookie: { secure: false } // Set to true if using HTTPS
+  }));
+// middle ware
 
 app.set('view engine', 'ejs');
 
@@ -34,7 +46,7 @@ require('dotenv').config();
 
 
 // Routes
-// app.use('/', userRoutes);
+app.use('/api/auth', userRoutes)
 
 
 
@@ -80,6 +92,16 @@ app.get('/testing1',(req,res)=>{
 
 app.get('/watch',(req,res)=>{
   res.render('watch')
+});
+
+app.get('/fruit',(req,res)=>{
+  res.render('fruit')
+});
+
+
+
+app.get('/port',(req,res)=>{
+  res.render('port')
 });
 
 

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/all2.css">
+    <link rel="stylesheet" href="/css/fruit.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <title>Add To Cart</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+   <header>
+    <div class="logo">
+       <a href="" class="logop"><p>Destty Nelly</p></a> 
+    </div>
+
+    <div class="nav">
+        <ul>
+            <li><a href="">Products</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+
+
+
+    <div class="icons">
+        <a href=""><i class="fa fa-person"></i></a>
+        <i class="fa fa-bell"></i>
+    </div>
+   </header>
+
+   <div class="nav2">
+    <ul>
+        <li><a href="">Products</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+
+
+
+
+<div class="lists">
+    <p class="orangep">Orange</p>
+    <p class="applep">Apple</p>
+    <p class="waterp">Watermelon</p>
+</div>
+
+
+
+
+<div class="into">
+
+
+
+    <div class="roll1">
+
+        <img src="/images/cwhite.png" alt="">
+
+
+        <div class="roll2" >
+            <img src="/images/cwhite.png" alt="">
+        </div>
+        <div class="fruits">
+            <img src="/images/orange.png" class="orangeimg" alt="">
+            <img src="/images/apple.png" class="appleimg" alt="">
+            <img src="/images/watermelon.png" class="waterimg" alt="">
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+    document.querySelector(".orangep").addEventListener("click", function(){
+
+
+        document.querySelector(".into").classList.remove("green")
+            document.querySelector(".into").classList.remove("red")
+        document.querySelector(".into").classList.add("orange")
+        
+        document.querySelector(".orangeimg").classList.remove("active")
+        document.querySelector(".appleimg").classList.remove("active")
+        document.querySelector(".waterimg").classList.remove("active")
+    })
+
+
+    document.querySelector(".applep").addEventListener("click", function(){
+
+            document.querySelector(".into").classList.remove("green")
+            document.querySelector(".into").classList.remove("orange")
+        document.querySelector(".into").classList.add("red")
+
+        
+        document.querySelector(".orangeimg").classList.add("active")
+        document.querySelector(".appleimg").classList.add("active")
+        document.querySelector(".waterimg").classList.remove("active")
+    })
+
+    document.querySelector(".waterp").addEventListener("click", function(){
+
+        document.querySelector(".into").classList.add("green")
+        document.querySelector(".into").classList.remove("red")
+        document.querySelector(".into").classList.remove("orange")
+        
+        document.querySelector(".orangeimg").classList.add("active")
+        document.querySelector(".appleimg").classList.remove("active")
+        document.querySelector(".waterimg").classList.add("active")
+    })
+</script>
+
+   
+</body>
+</html>
