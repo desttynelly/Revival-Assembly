@@ -15,11 +15,19 @@
 
 }
 
+.pic{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 .serm,
 .event,
 .test,
-.blo{
+.blo,
+.pix1,
+.quote{
     text-align: center;
+    color: beige;
 }
 .btn{
     display: flex;
@@ -41,7 +49,9 @@
 .n-sermon,
 .eventin,
 .testimony,
-.blogs{
+.blogs,
+.pixf,
+.quof{
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -56,7 +66,9 @@
 .n-sermon.active,
 .eventin.active,
 .testimony.active,
-.blogs.active{
+.blogs.active,
+.pixf.active,
+.quof.active{
     display: flex;
 }
 form .close{

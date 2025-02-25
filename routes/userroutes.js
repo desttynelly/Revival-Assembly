@@ -7,6 +7,8 @@ const app = express();
 const 
 {
   give,
+  Pictures,
+  Quotes
 
 
 } 
@@ -24,6 +26,8 @@ const upload = multer({ storage: storage }).fields([
 
 
 router.post('/give', give);
+router.post('/pictures', Pictures);
+router.post('/quotes', Quotes);
 
   
 

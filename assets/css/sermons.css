@@ -68,6 +68,7 @@ header{
 }
 .prev-serm .serm{
     margin: auto;
+    margin-top: 50px;
 }
 .prev-serm .d-sermon{
     display: flex;

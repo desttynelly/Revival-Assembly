@@ -4,6 +4,8 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const Give = require("../models/givemodel");
+const Pic = require("../models/picture");
+const Quo = require("../models/quote");
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const cloudinary = require("../cloudinary");
@@ -127,13 +129,13 @@ const give = async (req, res) => {
 };
 
 
-const invest = async (req, res) => {
+const Pictures = async (req, res) => {
     try {
-      const { fullname, phoneNumber, company, email, position, investmenttype, investmentamount, message, referral, contactmethod} = req.body;
+      const { picture} = req.body;
   
-      if (!fullname || !phoneNumber || !company || !email || !position || !investmenttype || !investmentamount || !message || !referral || !contactmethod) {
-        res.render("invest/Investment/404", {user: req.session.user})
-        // return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+      if (!picture ) {
+        // res.render("invest/Investment/404", {user: req.session.user})
+        return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
       }
   
       let imageURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
@@ -164,17 +166,8 @@ const invest = async (req, res) => {
       async function createuser(){
 
          // Create a new user with the provided data and the image URL if available
-      const user = new User({
-        fullname,
-        phoneNumber,
-        company,
-        email,
-        position,
-        investmenttype,
-        investmentamount,
-        message,
-        referral,
-        contactmethod
+      const user = new Pic({
+        picture
       });
 
 
@@ -185,21 +178,12 @@ const invest = async (req, res) => {
 
             req.session.user = {
                 id: user._id,
-                email: user.email,
-                fullname: user.fullname, 
-                phoneNumber: user.phoneNumber,
-                company: user.company,
-                referral: user.referral,
-                position: user.position,
-                investmenttype: user.investmenttype,
-                investmentamount: user.investmentamount,
-                message: user.message,
-                contactmethod: user.contactmethod
+                picture: user.picture,
                
                 
                 // Add other fields as needed
             };
-            res.render("invest/Investment", {user: req.session.user})
+            res.render("admin/admin", {user: req.session.user})
             // res.status(200).json({
             //     status: "Success",
             //     message: "Login successful",
@@ -220,9 +204,9 @@ const invest = async (req, res) => {
             // });
             
         } catch (error) {
-          res.render("invest/Investment/404", {user: req.session.user})
+          // res.render("invest/Investment/404", {user: req.session.user})
             // console.error('Error saving product:', error);
-            //     res.status(500).send('Error saving product');
+                res.status(500).send('Error saving product');
         }
       }
   
@@ -243,6 +227,108 @@ const invest = async (req, res) => {
     
 
  
+};
+
+
+
+const Quotes = async (req, res) => {
+  try {
+    const { quotes} = req.body;
+
+    if (!quotes ) {
+      // res.render("invest/Investment/404", {user: req.session.user})
+      return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+    }
+
+    let imageURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+
+    // If an image file is provided
+    if (req.file) {
+      // Wrap the Cloudinary upload in a promise
+     
+        const uploadStream = cloudinary.uploader.upload_stream({ resource_type: 'image' }, (error, result) => {
+          if (error) {
+              return res.status(500).send('Error uploading image to Cloudinary');
+          }
+         imageURL = result.secure_url;
+
+      
+           
+         createuser()
+
+        });
+        
+        streamifier.createReadStream(req.file.buffer).pipe(uploadStream);        
+    }else{
+      createuser()
+  
+      
+    }
+
+    async function createuser(){
+
+       // Create a new user with the provided data and the image URL if available
+    const user = new Quo({
+      quotes
+    });
+
+
+      try {
+          await user.save();
+          // Generate a JWT token
+          const token = jwt.sign({ id: user._id}, 'Adain', { expiresIn: '1h' });
+
+          req.session.user = {
+              id: user._id,
+              quotes: user.quotes,
+             
+              
+              // Add other fields as needed
+          };
+          res.render("admin/admin", {user: req.session.user})
+          // res.status(200).json({
+          //     status: "Success",
+          //     message: "Login successful",
+          //     token,
+          //     user: {
+          //         id: user._id,
+          //         email: user.email,
+          //         fullname: user.fullname,
+          //         phoneNumber: user.phoneNumber,
+          //         country: user.country,
+          
+          //         notificationsCount: user.notificationsCount,
+          //         referralCount: user.referralCount,
+          //         referredUsers: user.referredUsers,
+          //         points: user.points,
+          //         accountName: user.accountName
+          //     }
+          // });
+          
+      } catch (error) {
+        // res.render("invest/Investment/404", {user: req.session.user})
+          // console.error('Error saving product:', error);
+              res.status(500).send('Error saving product');
+      }
+    }
+
+   
+
+    
+
+   
+  } catch (error) {
+    console.error("Error during signup:", error);
+
+    // Handle errors and ensure only one response
+    if (!res.headersSent) {
+      res.status(500).json({ status: "Failed", message: error.message });
+    }
+  }
+
+  
+
+
 };
 
 
@@ -566,8 +652,8 @@ const order = async (req, res) => {
 module.exports =
 {
 
-  invest,
-  partnership,
+  Pictures,
+  Quotes,
   saveComment,
   getBlogAndComments,
   order,

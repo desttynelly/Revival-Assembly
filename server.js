@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
+const Pic = require('./models/picture');
+const Quo = require('./models/quote');
 const userRoutes = require('./routes/userroutes');
 const bodyparser = require('body-parser');
 const session = require("express-session")
@@ -51,9 +53,20 @@ app.use('/api/auth', userRoutes)
 
 
 // Routes
-app.get('/', (req, res) => {
-  res.render('index'); // Render signup form
+
+
+app.get("/", async (req, res) => {
+    try {
+        const pictures = await Pic.find().sort({ createdAt: -1 }).limit(8); 
+        const quotes = await Quo.find();
+        res.render("index", { Pic: pictures, Quo: quotes });
+    } catch (error) {
+        console.error("Error fetching pictures:", error);
+        res.render("index", { Pic: [] });
+    }
 });
+
+
 
 app.get('/home', (req, res) => {
   res.render('home'); // Render signup form
@@ -130,5 +143,5 @@ app.get('/admin/admin',(req,res)=>{
 // });
 
 // Start server
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5700;
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));

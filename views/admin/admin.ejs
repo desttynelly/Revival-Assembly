@@ -168,6 +168,38 @@
                 </form>
             </div>
 
+
+            <div class="pixf">
+                <form action="/api/auth/pictures" method="post">
+                    <div class="close">
+                        <img src="/images/close-svgrepo-com.png" alt="">
+                    </div>
+
+                    <label for="Pictures">Pictures</label>
+                    <input type="text" name="picture" id="picture" placeholder="insert pic url">
+
+                    <div class="btn">
+                        <button type="submit">Post</button>
+                        </div>
+                </form>
+            </div>
+
+            <div class="quof">
+                <form action="/api/auth/quotes" method="post">
+
+                    <div class="close">
+                        <img src="/images/close-svgrepo-com.png" alt="">
+                    </div>
+
+                    <label for="Quotes">Quotes</label>
+                    <input type="text" name="quotes" id="quotes" placeholder="insert quote pic url">
+
+                    <div class="btn">
+                        <button type="submit">Post</button>
+                        </div>
+                </form>
+            </div>
+
         </div>
 
         <div class="dashtop">
@@ -239,6 +271,28 @@
       </div>
 
 
+      <div class="pic">
+
+        <div class="pix1">
+            <p class="headp">Pictures</p>
+
+                    <div class="btn">
+                        <button class="pic1">Picture</button>
+                    </div>
+
+        </div>
+
+        <div class="quote">
+            <p class="headp">Quote</p>
+
+                    <div class="btn">
+                        <button class="Quo">Quote</button>
+                    </div>
+        </div>
+       
+      </div>
+
+
 
    
 
@@ -274,9 +328,20 @@
         })
 
 
+              //Pictures js
+              document.querySelector(".pic1").addEventListener("click", function(){
+            document.querySelector(".pixf").classList.add("active")
+        })
+
+              //quotes js
+              document.querySelector(".Quo").addEventListener("click", function(){
+            document.querySelector(".quof").classList.add("active")
+        })
+
+
         document.querySelectorAll(".close").forEach(button => {
     button.addEventListener("click", function(){
-        document.querySelectorAll(".blogs, .live, .n-sermon, .eventin, .testimony").forEach(section => {
+        document.querySelectorAll(".blogs, .live, .n-sermon, .eventin, .testimony, .pixf, .quof").forEach(section => {
             section.classList.remove("active");
         });
     });
