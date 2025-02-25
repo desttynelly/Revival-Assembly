@@ -247,28 +247,30 @@
     object-fit: cover; 
 }
 .nav-btn { 
-    user-select: none;
-    position: absolute; 
     top: 50%; 
-    z-index: 9;
-    font-size: 20px;
     transform: translateY(-50%); 
-    background: rgba(0, 0, 0, 0.657); 
-    color: white; 
-    border: none; 
-    padding: 15px 25px; 
-    cursor: pointer; 
-    border-radius: 100px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 9999;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    border-radius: 50%;
+    font-size: 20px;
+    background: #000000a8; 
+    cursor: pointer;
 }
 .left { left: 10px; }
 .right { right: 10px; }
 
-.quotes  .btn{
+.quotes  .bttn{
     margin-top: 50px;
     display: grid;
     justify-content: center;
 }
 .quotes button{
+    font-weight: 500;
     font-size: 14px;
     padding: 15px 25px;
     color: #fff;
