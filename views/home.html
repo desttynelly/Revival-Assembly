@@ -11,6 +11,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Revival Abuja</title>
+
+
+    <style>
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .slider-container { 
+            background-color: red;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            height: 400px; 
+            width: 100%; 
+            overflow: hidden; 
+            border-radius: 10px; 
+        }
+        .slider { 
+            display: flex; 
+            gap: 10px; 
+            width: max-content; 
+            white-space: nowrap; 
+        }
+        .slider img { 
+            width: 400px; 
+            height: 500px; 
+            border-radius: 5px; 
+            object-fit: cover; 
+        }
+        .nav-btn { 
+            position: absolute; 
+            top: 50%; 
+            z-index: 999;
+            transform: translateY(-50%); 
+            background: rgba(0,0,0,0.5); 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            cursor: pointer; 
+        }
+        .left { left: 10px; }
+        .right { right: 10px; }
+        
+    
+    </style>
 </head>
 <body>
 
@@ -131,6 +178,93 @@
            
         
     </div>
+
+
+
+    <div class="slider-container">
+        <button class="nav-btn left">&#10094;</button>
+        <div class="slider" id="slider"></div>
+        <button class="nav-btn right">&#10095;</button>
+    </div>
+    
+    <script>
+        const slider = document.getElementById('slider');
+        const images = [
+            'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zwhySGCEBxRRFYIcQgvOLOpRGqrT3d7Qng&s',
+            'https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE='
+        ];
+        
+        function loadImages() {
+            images.forEach(src => {
+                let img = document.createElement('img');
+                img.src = src;
+                slider.appendChild(img);
+            });
+
+            // Duplicate images to create infinite scrolling effect
+            images.forEach(src => {
+                let img = document.createElement('img');
+                img.src = src;
+                slider.appendChild(img);
+            });
+        }
+        
+        loadImages();
+       
+        let position = 0;
+        let isHolding = false;
+        let scrollDirection = 0;
+        let animationFrame;
+        let autoMoveInterval;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(${position}px)`;
+        }
+
+        function startAutoMove() {
+            autoMoveInterval = setInterval(() => {
+                position -= 1.5; // Auto-scroll speed
+                if (Math.abs(position) >= slider.scrollWidth / 2) {
+                    position = 0; // Reset to loop seamlessly
+                }
+                updateSlider();
+            }, 16);
+        }
+
+        startAutoMove();
+
+function startScrolling(direction) {
+    clearInterval(autoMoveInterval); // Stop auto-scroll
+    if (isHolding) return;
+    isHolding = true;
+    scrollDirection = direction;
+
+    function scroll() {
+        if (!isHolding) return;
+        position += scrollDirection * 10; // Adjust for smoother scrolling
+        if (position > 0) position = -slider.scrollWidth / 2;
+        if (Math.abs(position) >= slider.scrollWidth / 2) position = 0;
+        updateSlider();
+        animationFrame = requestAnimationFrame(scroll);
+    }
+
+    scroll();
+}
+
+
+function stopScrolling() {
+            isHolding = false;
+            cancelAnimationFrame(animationFrame);
+            startAutoMove(); // Resume auto-scroll
+        }
+
+        document.querySelector(".left").addEventListener("mousedown", () => startScrolling(1));
+        document.querySelector(".right").addEventListener("mousedown", () => startScrolling(-1));
+        window.addEventListener("mouseup", stopScrolling);
+        window.addEventListener("mouseleave", stopScrolling);
+
+    </script>
 
 
 
