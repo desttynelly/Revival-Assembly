@@ -43,6 +43,7 @@
             object-fit: cover; 
         }
         .nav-btn { 
+            user-select: none;
             position: absolute; 
             top: 50%; 
             z-index: 999;
@@ -224,7 +225,7 @@
 
         function startAutoMove() {
             autoMoveInterval = setInterval(() => {
-                position -= 1.5; // Auto-scroll speed
+                position -= 1; // Auto-scroll speed
                 if (Math.abs(position) >= slider.scrollWidth / 2) {
                     position = 0; // Reset to loop seamlessly
                 }
