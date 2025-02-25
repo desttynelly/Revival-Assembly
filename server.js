@@ -55,6 +55,10 @@ app.get('/', (req, res) => {
   res.render('index'); // Render signup form
 });
 
+app.get('/home', (req, res) => {
+  res.render('home'); // Render signup form
+});
+
 app.get('/Sermon',(req,res)=>{
   res.render('sermons')
 });
