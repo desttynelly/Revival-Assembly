@@ -213,9 +213,67 @@
 
 
 
+.quotes{
+    display: grid;
+    justify-content: center;
+    margin-top: 100px;
 
+}
+.quotes .headdp{
+    color: #fff;
+    margin: auto;
+}
 
+.slider-container { 
+    margin-top: 50px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+    height: 400px; 
+    width: 100%; 
+    overflow: hidden; 
+}
+.slider { 
+    display: flex; 
+    gap: 10px; 
+    width: max-content; 
+    white-space: nowrap; 
+}
+.slider img { 
+    width: 400px; 
+    height: 500px; 
+    border-radius: 5px; 
+    object-fit: cover; 
+}
+.nav-btn { 
+    user-select: none;
+    position: absolute; 
+    top: 50%; 
+    z-index: 9;
+    font-size: 20px;
+    transform: translateY(-50%); 
+    background: rgba(0, 0, 0, 0.657); 
+    color: white; 
+    border: none; 
+    padding: 15px 25px; 
+    cursor: pointer; 
+    border-radius: 100px;
+}
+.left { left: 10px; }
+.right { right: 10px; }
 
+.quotes  .btn{
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+}
+.quotes button{
+    font-size: 14px;
+    padding: 15px 25px;
+    color: #fff;
+    justify-content: center;
+}
 
 
 

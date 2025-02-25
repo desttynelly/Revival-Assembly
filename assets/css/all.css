@@ -26,7 +26,7 @@ button:hover{
     display: none;
 }
 header{
-    z-index: 99;
+    z-index: 999;
     position: fixed;
     display: flex;
     flex-wrap: wrap;
@@ -290,7 +290,12 @@ header nav .joinbtn button:hover{
 
 
 
-
+.headdp{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    text-align: center;
+}
 
 
 
