@@ -76,8 +76,8 @@ header nav ul li a:hover{
     background-color: #bcbaba;
 }
 .onpage{
-    color: black;
-    background-color: white;
+    color: rgb(76, 2, 2);
+    background-color: #bcbaba;
 }
 header nav .joinbtn{
     margin-top: -30px;
