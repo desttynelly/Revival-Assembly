@@ -29,7 +29,8 @@ header{
 
 .contact .d-contact-form{
     padding: 30px 60px;
-    width: 60%;
+    width: 90%;
+    max-width: 900px;
     background-color: #fff;
     justify-self: center;
 }

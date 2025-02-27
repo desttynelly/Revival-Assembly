@@ -174,10 +174,19 @@ header nav .joinbtn button:hover{
     text-indent: 10px;
     margin-bottom: 20px;
 }
-.giving form .send{
+.giving form .center{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
-    padding: 10px 60px;
 }
+.giving form .send{
+    margin: auto;
+    padding: 10px 60px;
+    justify-content: center;
+}
+
 
 
 
@@ -367,7 +376,7 @@ header nav .joinbtn button:hover{
     }
     header nav ul li{
         margin-left: 50px;
-        line-height: 30px;
+        line-height: 50px;
     }
 
     header nav ul li a{
@@ -380,6 +389,11 @@ header nav .joinbtn button:hover{
     header nav ul li a:hover{
         color: black;
         background: none;
+    }
+
+    .onpage{
+        color: #ffffff;
+        background-color: rgb(69, 69, 69);
     }
 
     header nav .joinbtn{
