@@ -128,6 +128,45 @@ app.get('/admin/admin',(req,res)=>{
   res.render('admin/admin')
 });
 
+app.get("/admin/admin", async (req, res) => {
+
+      // Check if session exists
+      if (!req.session.user) {
+          return res.redirect("/login"); // Redirect to login page
+      }
+
+      // Fetch user data
+      const signup = await Just.find(); 
+      res.render("admin/admin", { signup });
+  
+});
+
+
+app.get('/login', (req, res) => {
+  res.render('admin/html/adminsignin'); // Render investment.ejs
+});
+
+app.get('/signup', (req, res) => {
+  res.render('404'); // Render investment.ejs
+});
+
+app.get('/api/auth/admin/signup', (req, res) => {
+   // Check if session exists
+   if (!req.session.user) {
+    return res.redirect("/login"); // Redirect to login page
+ }
+  res.render('admin/html/adminsignin'); // Render investment.ejs
+});
+
+app.get('/api/auth/admin/login', (req, res) => {
+
+   // Check if session exists
+   if (!req.session.user) {
+    return res.redirect("/login"); // Redirect to login page
+}
+  res.render('admin/html/adminsignin'); // Render investment.ejs
+});
+
 // app.get('/user/:id', async (req, res) => {
 //   try {
 //     const guest = await Guest.findById(req.params.id);

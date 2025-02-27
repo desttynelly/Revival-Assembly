@@ -8,7 +8,9 @@ const
 {
   give,
   Pictures,
-  Quotes
+  Quotes,
+  logIn,
+  signup,
 
 
 } 
@@ -24,10 +26,12 @@ const upload = multer({ storage: storage }).fields([
     { name: 'image3', maxCount: 1 }
 ]);
 
-
+router.post('/admin/login', logIn);
 router.post('/give', give);
 router.post('/pictures', Pictures);
 router.post('/quotes', Quotes);
+router.post('/admin/signup', signup);
+
 
   
 
