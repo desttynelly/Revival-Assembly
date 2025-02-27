@@ -135,7 +135,7 @@ header nav .joinbtn button:hover{
     color: #000;
     padding: 10px;
     max-width: 400px;
-    height: 80%;
+    height: auto;
     min-height: 300px;
     align-content: center;
     margin: auto;
