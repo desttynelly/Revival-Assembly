@@ -54,6 +54,7 @@ body {
 
 .content{
     width: 80%;
+    margin: auto;
     justify-self: center;
 }
 
