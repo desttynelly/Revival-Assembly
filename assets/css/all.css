@@ -340,7 +340,6 @@ header nav .joinbtn button:hover{
         display: flex;
         height: 100px;
         flex-wrap: wrap;
-        background-color: red;
         align-items: center;
         justify-content: center;
     }
