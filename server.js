@@ -121,6 +121,17 @@ app.get('/port',(req,res)=>{
   res.render('port')
 });
 
+app.get("/gallery", async (req, res) => {
+  try {
+      const pictures = await Pic.find(); 
+      const quotes = await Quo.find();
+      res.render("gallery", { Pic: pictures, Quo: quotes });
+  } catch (error) {
+      console.error("Error fetching pictures:", error);
+      res.render("index", { Pic: [] });
+  }
+});
+
 
 
 

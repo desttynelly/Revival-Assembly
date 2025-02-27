@@ -1,0 +1,104 @@
+
+
+
+header{
+    margin-top: -200px;
+}
+.giving{
+    margin-top: -200px;
+}
+.sub{
+    color: #fff;
+    margin-top: 200px;
+}
+.sub ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+.sub ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.sub ul li{
+    margin-bottom: 10px;
+}
+.sub ul li a {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 5px;
+    color: #fff; /* Adjust text color */
+    cursor: pointer;
+    user-select: none;
+}
+
+.sub ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: red;
+    transition: width 0.3s ease-in-out; /* Controls animation speed */
+}
+
+.sub ul li a:hover::after {
+    width: 100%; /* Expands border from left to right */
+}
+
+/* Active state
+.sub ul li a.active::after {
+    width: 100%; /* Keep the underline visible
+} */
+
+
+
+.sub ul li .pic.stay::after {
+    width: 100%; /* Keep the underline visible */
+}
+.sub ul li .quo.stay::after {
+    width: 100%; /* Keep the underline visible */
+}
+
+
+.pictures,
+.quotes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.pictures img,
+.quotes img{
+    width: 25%;
+    min-width: 150px;
+    margin: auto;
+    justify-content: center;
+    object-fit: cover;
+}
+
+@media (max-width: 600px){
+    .pictures img,
+    .quotes img{
+    background-color: red;
+    width: 50%;
+    min-width: 150px;
+    margin: auto;
+    justify-content: center;
+    object-fit: cover;
+}
+}
+
+@media (max-width: 300px){
+    .pictures img,
+    .quotes img{
+    background-color: red;
+    width: 100%;
+    min-width: 150px;
+    margin: auto;
+    justify-content: center;
+    object-fit: cover;
+}
+}
