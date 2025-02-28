@@ -97,6 +97,11 @@ header{
     text-align: start;
     overflow: hidden;
 }
+.timeandate{
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: 500;
+}
 .events .d-events .realevent .d-event .btn{
     width: 120px;
     height: 40px;

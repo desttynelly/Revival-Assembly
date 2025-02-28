@@ -109,9 +109,17 @@
 
 
 
-               <a href="https://www.youtube.com/embed/9_zoldQOPMo?si=buWp1ahN4ghmhMSQ" target="_blank">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/9_zoldQOPMo?si=buWp1ahN4ghmhMSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-               </a> 
+             
+          
+                <% if (lives && lives.length > 0) { %>
+                    <% lives.forEach(function (lives) { %>
+
+                        <iframe width="560" height="315" src="<%= lives.lives %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        
+                    <% }); %>
+                <% } else { %>
+                    <p class="nob">No blog yet.</p>
+                <% } %>
 
 
 
@@ -119,9 +127,7 @@
 
 
             </div>
-            <div class="nav-oo">
-                
-            </div>
+           
         </div>
 
 
@@ -135,20 +141,30 @@
           
 
 
+
+                <% if (pserm && pserm.length > 0) { %>
+                    <% pserm.forEach(function (pserm) { %>
+
                          <div class="d-sermon">
 
                             <div class="d-img">
-                                <img src="https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/476915517_1039703324847993_1747298602309459111_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF6GRQikGbgTrOFNSQhw1gSjv8H9eta3BiO_wf161rcGAy4C00UYOoBI0Etxt4s7kn6c-nlACajYDLoGwtjSfBA&_nc_ohc=u3mWutnOxMAQ7kNvgHSUVuH&_nc_oc=AdhPr5Ez-SIXyMEc0YkEifjMGhwPPEk-T41XJuss6jVABX2QGEekXBOqMUUmde5ebiU&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AOr53wpVp-yGgUgpJqK-CAj&oh=00_AYAqbsxRAqgPrl7GHFfb7GvOukfqui-0v5WA7VFhKyuaTw&oe=67C3C92D" alt="">
+                                <img src="<%= pserm.simg %>" alt="">
                             </div>
 
                             <div class="d-text">
-                                <p class="topp">The spirit of Jesus</p>
+                                <p class="topp"><%= pserm.title %></p>
 
-                                <p class="preach">Apst. Gen. Anselm M.</p>
+                                <p class="preach"><%= pserm.preacher %></p>
 
-                                <button class="woy">Watch on YouTube</button>
+                                <a href="<%= pserm.ylink %>" target="_blank"><button class="woy">Watch on YouTube</button></a>
                             </div>
                         </div>
+                        
+                    <% }); %>
+                <% } else { %>
+                    <p class="nob">No blog yet.</p>
+                <% } %>
+                      
 
             </div>
 
@@ -190,31 +206,7 @@
 
     <script>
 
-document.addEventListener("DOMContentLoaded", function() {
-    const sermonData = JSON.parse(localStorage.getItem("sermon"));
 
-    if (sermonData) {
-        const sermonContainer = document.querySelector(".sermon-container"); // The parent div where we'll insert the sermon
-
-        const sermonDiv = document.createElement("div");
-        sermonDiv.classList.add("d-sermon");
-
-        sermonDiv.innerHTML = `
-            <div class="d-img">
-                <iframe src="${sermonData.iframeLink}" frameborder="0"></iframe>
-            </div>
-            <div class="d-text">
-                <p class="topp">${sermonData.title}</p>
-                <p class="preach">${sermonData.preacher}</p>
-                <button class="woy" onclick="window.open('${sermonData.youtubeLink}', '_blank')">Watch on YouTube</button>
-            </div>
-        `;
-
-        sermonContainer.appendChild(sermonDiv);
-    } else {
-        console.log("No sermon data found!");
-    }
-});
 
 
     </script>

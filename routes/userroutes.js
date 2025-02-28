@@ -11,6 +11,12 @@ const
   Quotes,
   logIn,
   signup,
+  LiveS,
+  pserm,
+  event,
+  testi,
+  blog
+
 
 
 } 
@@ -27,6 +33,11 @@ const upload = multer({ storage: storage }).fields([
 ]);
 
 router.post('/admin/login', logIn);
+router.post('/lives', LiveS);
+router.post('/sermon', pserm);
+router.post('/event', event);
+router.post('/blog', blog);
+router.post('/testi', testi);
 router.post('/give', give);
 router.post('/pictures', Pictures);
 router.post('/quotes', Quotes);
@@ -43,3 +54,21 @@ router.post('/admin/signup', signup);
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -110,22 +110,42 @@
     
     <!-- Blog 1 -->
     <div class="d-blog">
-        <div class="blog-post">
-            <div class="img">
-                <img src="https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/476915517_1039703324847993_1747298602309459111_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF6GRQikGbgTrOFNSQhw1gSjv8H9eta3BiO_wf161rcGAy4C00UYOoBI0Etxt4s7kn6c-nlACajYDLoGwtjSfBA&_nc_ohc=u3mWutnOxMAQ7kNvgHSUVuH&_nc_oc=AdhPr5Ez-SIXyMEc0YkEifjMGhwPPEk-T41XJuss6jVABX2QGEekXBOqMUUmde5ebiU&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AepXK-Rcv9mehgIMY3qEFl3&oh=00_AYAPPoNL60NQ3CqW2Hi153TkO1kO3SLAEC_EZfVWv_-4uw&oe=67C3C92D" alt="">
-            </div>
-            <div class="blog-p">
-                <p class="topic">The spirit of Jesus</p>
-                <p class="few">Lorem ipsum, dolor sit amet consectetur adipisicing elit...</p>
-                <div class="two-d">
-                    <div class="profile">
-                        <img src="https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/476915517_1039703324847993_1747298602309459111_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF6GRQikGbgTrOFNSQhw1gSjv8H9eta3BiO_wf161rcGAy4C00UYOoBI0Etxt4s7kn6c-nlACajYDLoGwtjSfBA&_nc_ohc=u3mWutnOxMAQ7kNvgHSUVuH&_nc_oc=AdhPr5Ez-SIXyMEc0YkEifjMGhwPPEk-T41XJuss6jVABX2QGEekXBOqMUUmde5ebiU&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AepXK-Rcv9mehgIMY3qEFl3&oh=00_AYAPPoNL60NQ3CqW2Hi153TkO1kO3SLAEC_EZfVWv_-4uw&oe=67C3C92D" alt="">
-                        <p class="profile-name">Apst. Gen. Anselm M.</p>
+
+
+
+        <% if (blog && blog.length > 0) { %>
+            <% blog.forEach(function (blog) { %>
+
+                <div class="blog-post">
+                    <div class="img">
+                        <img src="<%= blog.bloimg %>" alt="">
                     </div>
-                    <p class="date">FEB 2, 2025</p>
+                    <div class="blog-p">
+                        <p class="topic"><%= blog.blotitle %></p>
+                        <p class="few"><%= blog.bloinfo %></p>
+                        <div class="two-d">
+                            <div class="profile">
+                                <img src="<%= blog.blopimg %>" alt="">
+                                <p class="profile-name"><%= blog.blopname %></p>
+                            </div>
+                            <p class="date"><%= blog.blodate %></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+                
+            <% }); %>
+        <% } else { %>
+            <p class="nob">No blog yet.</p>
+        <% } %>
+
+
+
+        
+
+
+
+
     </div>
     
  

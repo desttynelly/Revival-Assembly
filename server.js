@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
 const Pic = require('./models/picture');
+const LiveS = require('./models/Livesmodel');
+const Event = require('./models/eventmodel');
+const Testi = require("./models/testimony");
+const Pserm = require('./models/Psermonmodel');
+const Blog = require('./models/blogmodel');
 const Quo = require('./models/quote');
 const userRoutes = require('./routes/userroutes');
 const bodyparser = require('body-parser');
@@ -72,21 +77,51 @@ app.get('/home', (req, res) => {
   res.render('home'); // Render signup form
 });
 
-app.get('/Sermon',(req,res)=>{
-  res.render('sermons')
+
+app.get("/Sermon", async (req, res) => {
+  try {
+      const lives = await LiveS.find().sort({ createdAt: -1 }).limit(1);
+      const pserm = await Pserm.find(); 
+      res.render("sermons", { lives, pserm });
+  } catch (error) {
+      console.error("Error fetching pictures:", error);
+      res.render("404", { Pic: [] });
+  }
 });
 
-app.get('/events',(req,res)=>{
-  res.render('events')
+
+app.get("/events", async (req, res) => {
+  try {
+      const event = await Event.find(); 
+      res.render("events", { event });
+  } catch (error) {
+      console.error("Error fetching pictures:", error);
+      res.render("404", { Pic: [] });
+  }
 });
 
-app.get('/testimonies',(req,res)=>{
-  res.render('testimonies')
+
+
+app.get("/testimonies", async (req, res) => {
+  try {
+      const testi = await Testi.find(); 
+      res.render("testimonies", { testi });
+  } catch (error) {
+      console.error("Error fetching pictures:", error);
+      res.render("404", { Pic: [] });
+  }
 });
 
 
-app.get('/blog',(req,res)=>{
-  res.render('blog')
+
+app.get("/blog", async (req, res) => {
+  try {
+      const blog = await Blog.find(); 
+      res.render("blog", { blog });
+  } catch (error) {
+      console.error("Error fetching pictures:", error);
+      res.render("404", { Pic: [] });
+  }
 });
 
 app.get('/about',(req,res)=>{

@@ -4,6 +4,11 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const Give = require("../models/givemodel");
+const Lives = require("../models/Livesmodel");
+const Pserm = require("../models/Psermonmodel");
+const Testi = require("../models/testimony");
+const Event = require("../models/eventmodel");
+const Blog = require("../models/blogmodel");
 const Signup = require("../models/signup");
 const Pic = require("../models/picture");
 const Quo = require("../models/quote");
@@ -11,8 +16,8 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const cloudinary = require("../cloudinary");
 const multer = require('multer');
+const streamifier  = require("streamifier");
 // const upload = multer({ dest: 'uploads/' });
-
 
 
 
@@ -184,7 +189,8 @@ const Pictures = async (req, res) => {
                 
                 // Add other fields as needed
             };
-            res.render("admin/admin", {user: req.session.user})
+            const returnUrl = req.headers.referer || "/admin/admin"; // Fallback to home if no referrer
+            return res.redirect("/admin/admin");
             // res.status(200).json({
             //     status: "Success",
             //     message: "Login successful",
@@ -286,7 +292,8 @@ const Quotes = async (req, res) => {
               
               // Add other fields as needed
           };
-          res.render("admin/admin", {user: req.session.user})
+          const returnUrl = req.headers.referer || "/admin/admin"; // Fallback to home if no referrer
+          return res.redirect("/admin/admin");
           // res.status(200).json({
           //     status: "Success",
           //     message: "Login successful",
@@ -438,6 +445,283 @@ async function createUser(email, password, imageURL, req, res) {
 
 
 
+const LiveS = async (req, res) => {
+  try {
+    const { lives} = req.body;
+
+    if (!lives ) {
+      // res.render("invest/Investment/404", {user: req.session.user})
+      return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+    }
+
+    let imageURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+
+    // If an image file is provided
+    if (req.file) {
+      // Wrap the Cloudinary upload in a promise
+     
+        const uploadStream = cloudinary.uploader.upload_stream({ resource_type: 'image' }, (error, result) => {
+          if (error) {
+              return res.status(500).send('Error uploading image to Cloudinary');
+          }
+         imageURL = result.secure_url;
+
+      
+           
+         createuser()
+
+        });
+        
+        streamifier.createReadStream(req.file.buffer).pipe(uploadStream);        
+    }else{
+      createuser()
+  
+      
+    }
+
+    async function createuser(){
+
+       // Create a new user with the provided data and the image URL if available
+    const user = new Lives({
+      lives
+    });
+
+
+      try {
+          await user.save();
+          // Generate a JWT token
+          const token = jwt.sign({ id: user._id}, 'Adain', { expiresIn: '1h' });
+
+          req.session.user = {
+              id: user._id,
+              lives: user.lives,
+             
+              
+              // Add other fields as needed
+          };
+          const returnUrl = req.headers.referer || "admin/admin"; // Fallback to home if no referrer
+          return res.redirect("/admin/admin");
+  
+          
+      } catch (error) {
+              res.status(500).send('Error saving product');
+      }
+    }
+
+   
+
+    
+
+   
+  } catch (error) {
+    console.error("Error during signup:", error);
+
+    if (!res.headersSent) {
+      res.status(500).json({ status: "Failed", message: error.message });
+    }
+  }
+
+  
+
+
+};
+
+
+
+
+
+const pserm = async (req, res) => {
+  const { simg, title, preacher, ylink } = req.body;
+
+
+
+  try {
+      if (!simg || !title || !preacher || !ylink) {
+          return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+      }
+
+   
+
+      // Create new user document
+      const user = new Pserm({
+          simg,
+          title,
+          preacher,
+          ylink,
+      });
+
+      try {
+          await user.save();
+          const token = jwt.sign({ id: user._id }, "Adain", { expiresIn: "1h" });
+
+          req.session.user = {
+              id: user._id,
+              simg: user.simg,
+              title: user.title,
+              preacher: user.preacher,
+              ylink: user.ylink,
+          };
+
+          return res.redirect("/admin/admin");
+      } catch (error) {
+          res.status(500).send("Error saving user");
+      }
+  } catch (error) {
+      console.error("Error during upload:", error);
+
+      if (!res.headersSent) {
+          res.status(500).json({ status: "Failed", message: error.message });
+      }
+  }
+};
+
+
+
+const event = async (req, res) => {
+  const { eimg, etitle, etext, time, date } = req.body;
+
+
+
+  try {
+      if (!eimg || !etitle || !etext) {
+          return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+      }
+
+   
+
+      // Create new user document
+      const user = new Event({
+          eimg,
+          etitle,
+          etext,
+          time,
+          date
+      });
+
+      try {
+          await user.save();
+          const token = jwt.sign({ id: user._id }, "Adain", { expiresIn: "1h" });
+
+          req.session.user = {
+              id: user._id,
+              eimg: user.eimg,
+              etitle: user.etitle,
+              etext: user.etext,
+              time: user.time,
+              date: user.date
+          };
+
+          return res.redirect("/admin/admin");
+      } catch (error) {
+          res.status(500).send("Error saving user");
+      }
+  } catch (error) {
+      console.error("Error during upload:", error);
+
+      if (!res.headersSent) {
+          res.status(500).json({ status: "Failed", message: error.message });
+      }
+  }
+};
+
+
+const testi = async (req, res) => {
+  const { pname, ttitle, tinfo } = req.body;
+
+
+
+  try {
+      if (!pname || !ttitle || !tinfo) {
+          return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+      }
+
+   
+
+      // Create new user document
+      const user = new Testi({
+          pname,
+          ttitle,
+          tinfo,
+      });
+
+      try {
+          await user.save();
+          const token = jwt.sign({ id: user._id }, "Adain", { expiresIn: "1h" });
+
+          req.session.user = {
+              id: user._id,
+              pname: user.pname,
+              ttitle: user.ttitle,
+              tinfo: user.tinfo
+          };
+
+          return res.redirect("/admin/admin");
+      } catch (error) {
+          res.status(500).send("Error saving user");
+      }
+  } catch (error) {
+      console.error("Error during upload:", error);
+
+      if (!res.headersSent) {
+          res.status(500).json({ status: "Failed", message: error.message });
+      }
+  }
+};
+
+
+
+
+const blog = async (req, res) => {
+  const { bloimg, blotitle, bloinfo, blopimg, blopname, blodate } = req.body;
+
+
+
+  try {
+      if (!bloimg || !blotitle || !bloinfo || !blopimg || !blopname || !blodate) {
+          return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+      }
+
+   
+
+      // Create new user document
+      const user = new Blog({
+          bloimg,
+          blotitle,
+          bloinfo,
+          blopimg,
+          blopname,
+          blodate
+      });
+
+      try {
+          await user.save();
+          const token = jwt.sign({ id: user._id }, "Adain", { expiresIn: "1h" });
+
+          req.session.user = {
+              id: user._id,
+              bloimg: user.bloimg,
+              blotitle: user.blotitle,
+              bloinfo: user.bloinfo,
+              blopimg: user.blopimg,
+              blopname: user.blopname,
+              blodate: user.blodate
+          };
+
+          return res.redirect("/admin/admin");
+      } catch (error) {
+          res.status(500).send("Error saving user");
+      }
+  } catch (error) {
+      console.error("Error during upload:", error);
+
+      if (!res.headersSent) {
+          res.status(500).json({ status: "Failed", message: error.message });
+      }
+  }
+};
+
+
+
 
 
 module.exports =
@@ -447,6 +731,11 @@ module.exports =
   Quotes,
   give,
   logIn,
-  signup
+  signup,
+  LiveS,
+  pserm,
+  event,
+  testi,
+  blog
  
 };

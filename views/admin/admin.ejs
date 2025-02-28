@@ -19,7 +19,7 @@
             <div class="sermon">
                 
                 <div class="live">
-                    <form action="">
+                    <form action="/api/auth/lives" method="post">
 
                         <div class="close">
                             <img src="/images/close-svgrepo-com.png" alt="">
@@ -27,7 +27,7 @@
 
                         <p class="headdp">Live</p>
                         <label for="live">iframe link:</label>
-                        <input type="text" name="tlink" id="live" placeholder="Live Sermon"><br>
+                        <input type="text" name="lives" id="live" placeholder="Live Sermon"><br>
                         
                         <div class="btn">
                             <button type="submit">Post</button>
@@ -37,15 +37,15 @@
 
                 <div class="n-sermon">
 
-                    <form action="">
+                    <form action="/api/auth/sermon" method="post">
 
                         <div class="close">
                             <img src="/images/close-svgrepo-com.png" alt="">
                         </div>
 
                         <p class="headdp">normal sermon</p>
-                        <label for="iframe">Iframe Link:</label>
-                        <input type="text" name="link" class="link" placeholder="iframe link">
+                        <label for="iframe">Sermon Image:</label>
+                        <input type="text" name="simg" class="link" placeholder="image Url">
                         <br>
                         <label for="title">Title:</label>
                         <input type="text" name="title" class="title" placeholder="Preaching title">
@@ -71,19 +71,26 @@
 
 
             <div class="eventin">
-                <form action="">
+                <form action="/api/auth/event" method="post">
                     <div class="close">
                         <img src="/images/close-svgrepo-com.png" alt="">
                     </div>
                     <p class="headdp">Events</p>
                     <label for="eventimg">Event Image:</label>
-                    <input type="file" name="eimg" class="eimg" placeholder="event Img">
+                    <input type="text" name="eimg" class="eimg" placeholder="event Img">
                     <br>
                     <label for="eventhead">Event Title:</label>
                     <input type="text" name="etitle" class="etitle" placeholder="event title">
                     <br>
                     <label for="eventext">Event Text:</label>
                     <input type="text" name="etext" class="etext" placeholder="event text">
+                    <br>
+
+                    <label for="eventext">Event Time:</label>
+                    <input type="text" name="time" class="etext" placeholder="event time">
+                    <br>
+                    <label for="eventext">Event Date:</label>
+                    <input type="text" name="date" class="etext" placeholder="event date">
                     <br>
 
                     
@@ -98,7 +105,7 @@
 
             <div class="testimony">
 
-                <form id="tform" action="">
+                <form id="tform" action="/api/auth/testi" method="post">
 
                     <div class="close">
                         <img src="/images/close-svgrepo-com.png" alt="">
@@ -129,7 +136,7 @@
 
             <div class="blogs">
 
-                <form action="">
+                <form action="/api/auth/blog" method="post">
 
 
                     <div class="close">
@@ -138,7 +145,7 @@
 
                     <p class="headdp">Blog</p>
                     <label for="blogimg">Blog Image</label>
-                    <input type="file" name="bloimg" class="bloimg">
+                    <input type="text" name="bloimg" class="bloimg" placeholder="image url">
                     <br>
 
                     <label for="blotitle">Blog Title</label>
@@ -151,7 +158,7 @@
                     <br>
 
                     <label for="blopimg">Blog Poster Image</label>
-                    <input type="file" name="blopimg" class="blopimg">
+                    <input type="text" name="blopimg" class="blopimg" placeholder="poster img url">
                     <br>
 
                     <label for="blopname">Blog Poster Name</label>
@@ -354,25 +361,7 @@
 
 <script>
 
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form from reloading the page
 
-    // Get input values
-    const iframeLink = document.querySelector(".link").value;
-    const title = document.querySelector(".title").value;
-    const preacher = document.querySelector(".preacher").value;
-    const youtubeLink = document.querySelector(".ylink").value;
-
-    // Create an object to store
-    const sermonData = { iframeLink, title, preacher, youtubeLink };
-
-    // Save to localStorage (Convert to JSON string)
-    localStorage.setItem("sermon", JSON.stringify(sermonData));
-
-    alert("Sermon saved successfully!");
-    // Optionally, redirect to the display page
-    window.location.href = "/admin/admin"; 
-});
 
 
 
@@ -380,24 +369,7 @@ document.querySelector("form").addEventListener("submit", function(event) {
 
 // testimony form
 
-document.querySelector("#tform").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form from reloading the page
 
-    // Get input values
-    const pname = document.querySelector(".pname").value;
-    const ttitle = document.querySelector(".ttitle").value;
-    const tinfo = document.querySelector(".tinfo").value;
-
-    // Create an object to store
-    const TestData = { pname, ttitle, tinfo };
-
-    // Save to localStorage (Convert to JSON string)
-    localStorage.setItem("sermon", JSON.stringify(TestData));
-
-    alert("Sermon saved successfully!");
-    // Optionally, redirect to the display page
-    window.location.href = "/admin/admin"; 
-});
 
 
 
