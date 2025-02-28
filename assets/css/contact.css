@@ -29,11 +29,11 @@ header{
 
 .contact .d-contact-form{
     padding: 30px 60px;
-    width: 90%;
+    width: 60%;
     max-width: 900px;
+    margin-left: 0px;
     margin: auto;
     background-color: #fff;
-    justify-self: center;
 }
 .contact .d-contact-form .headdp{
     text-align: center;
@@ -69,6 +69,7 @@ header{
     background-color: red;
     width: 150px;
     height: 40px;
+    margin: auto;
     justify-self: center;
 }
 .contact .d-contact-form form .btn button{
@@ -79,6 +80,7 @@ header{
 
 
 .container {
+    width: 100%;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -102,4 +104,30 @@ h2 {
     text-decoration: none;
     font-size: 20px;
     color: #333;
+}
+
+
+
+
+
+
+@media (max-width: 500px){
+
+    .contact .d-contact-form{
+        padding: 0px 0px;
+        width: 100%;
+        max-width: 900px;
+        margin-left: 0px;
+        margin: auto;
+    }
+
+    .container {
+        width: 85%;
+        margin: 0px auto;
+        padding: 20px;
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    
 }
