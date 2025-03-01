@@ -52,7 +52,7 @@ header nav{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
+    
 }
 header nav ul{
     margin: 0px;
@@ -72,12 +72,12 @@ header nav ul li a{
     border-radius: 5px;
 }
 header nav ul li a:hover{
-    color: black;
-    background-color: #bcbaba;
+    color: red;
+    border-bottom: 2px solid #ff000069;
 }
 .onpage{
-    color: rgb(0, 0, 0);
-    background-color: #bcbaba;
+    color: #ff0000;
+    border-bottom: 2px solid #ff0000;
 }
 header nav .joinbtn{
     margin-top: -30px;
@@ -380,7 +380,7 @@ header nav .joinbtn button:hover{
     }
 
     header nav ul li a{
-        text-decoration: underline;
+        text-decoration: none;
         color: black;
         font-size: 16px;
         padding: 10px;
@@ -391,10 +391,7 @@ header nav .joinbtn button:hover{
         background: none;
     }
 
-    .onpage{
-        color: #ffffff;
-        background-color: rgb(69, 69, 69);
-    }
+ 
 
     header nav .joinbtn{
         margin-top: 10px;

@@ -28,9 +28,7 @@ app.use(session({
     store: "",
     cookie: { secure: false } // Set to true if using HTTPS
   }));
-// middle ware
 
-app.set('view engine', 'ejs');
 
 
 
