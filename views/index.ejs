@@ -226,17 +226,22 @@
     <p class="headdp">Quotes</p>
 
     <div class="slider-container">
-        <button class="nav-btn left">&#10094;</button>
-        <div class="slider" id="slider">
+        <button class="nav-btn left" aria-label="Slide Left"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-wrapper">
+          <div class="slider" id="slider">
             <% if (Quo && Quo.length > 0) { %>
-                <% Quo.forEach(function (quo) { %>
-                    <img src="<%= quo.image1 %>" alt="Image">
-                <% }); %>
+              <% Quo.forEach(function (quo) { %>
+                <img src="<%= quo.image1 %>" alt="Image">
+              <% }); %>
+              <!-- Duplicate images for seamless looping -->
+              <% Quo.forEach(function (quo) { %>
+                <img src="<%= quo.image1 %>" alt="Image">
+              <% }); %>
             <% } %>
+          </div>
         </div>
-        <button class="nav-btn right">&#10095;</button>
-    </div>
-
+        <button class="nav-btn right" aria-label="Slide Right"><i class="fas fa-chevron-right"></i></button>
+      </div>
     <div class="bttn">
         <a href="/gallery"><button>see more</button></a> 
     </div>
@@ -327,62 +332,85 @@
 
      
     <script>
-        const slider = document.getElementById('slider');
-   
-       
-        let position = 0;
-        let isHolding = false;
-        let scrollDirection = 0;
-        let animationFrame;
-        let autoMoveInterval;
+        document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('slider');
+  const sliderContainer = document.querySelector('.slider-container');
+  const images = slider.querySelectorAll('img');
+  const imageWidth = images[0]?.offsetWidth + 15 || 315; // Width + margin
+  let position = 0;
+  let isHolding = false;
+  let autoMoveInterval;
+  const autoScrollSpeed = 1; // Pixels per frame
+  const manualScrollSpeed = 5; // Pixels per frame for manual scroll
+  const resumeDelay = 3000; // 3 seconds delay before resuming auto-scroll
 
-        function updateSlider() {
-            slider.style.transform = `translateX(${position}px)`;
-        }
+  // Ensure there are images to slide
+  if (images.length === 0) return;
 
-        function startAutoMove() {
-            autoMoveInterval = setInterval(() => {
-                position -= 1; // Auto-scroll speed
-                if (Math.abs(position) >= slider.scrollWidth / 2) {
-                    position = 0; // Reset to loop seamlessly
-                }
-                updateSlider();
-            }, 16);
-        }
+  // Update slider position
+  function updateSlider() {
+    slider.style.transform = `translateX(${position}px)`;
+  }
 
-        startAutoMove();
+  // Seamless loop: Reset position when reaching the halfway point
+  function handleLoop() {
+    const halfWidth = (slider.scrollWidth / 2);
+    if (Math.abs(position) >= halfWidth) {
+      position = position < 0 ? 0 : -halfWidth;
+      slider.style.transition = 'none'; // Disable transition for instant jump
+      updateSlider();
+      // Re-enable transition after a short delay
+      setTimeout(() => {
+        slider.style.transition = 'transform 0.3s ease';
+      }, 0);
+    }
+  }
 
-function startScrolling(direction) {
+  // Auto-scroll function
+  function startAutoMove() {
+    clearInterval(autoMoveInterval);
+    autoMoveInterval = setInterval(() => {
+      if (!isHolding) {
+        position -= autoScrollSpeed;
+        updateSlider();
+        handleLoop();
+      }
+    }, 16); // ~60fps
+  }
+
+  // Manual scroll function
+  function startScrolling(direction) {
     clearInterval(autoMoveInterval); // Stop auto-scroll
-    if (isHolding) return;
     isHolding = true;
-    scrollDirection = direction;
 
     function scroll() {
-        if (!isHolding) return;
-        position += scrollDirection * 10; // Adjust for smoother scrolling
-        if (position > 0) position = -slider.scrollWidth / 2;
-        if (Math.abs(position) >= slider.scrollWidth / 2) position = 0;
-        updateSlider();
-        animationFrame = requestAnimationFrame(scroll);
+      if (!isHolding) return;
+      position += direction * manualScrollSpeed;
+      updateSlider();
+      handleLoop();
+      requestAnimationFrame(scroll);
     }
 
     scroll();
-}
+  }
 
+  // Stop scrolling and resume auto-scroll after delay
+  function stopScrolling() {
+    isHolding = false;
+    setTimeout(startAutoMove, resumeDelay);
+  }
 
-function stopScrolling() {
-            isHolding = false;
-            cancelAnimationFrame(animationFrame);
-            startAutoMove(); // Resume auto-scroll
-        }
+  // Event listeners for navigation buttons
+  document.querySelector('.left').addEventListener('mousedown', () => startScrolling(1));
+  document.querySelector('.right').addEventListener('mousedown', () => startScrolling(-1));
+  window.addEventListener('mouseup', stopScrolling);
+  window.addEventListener('mouseleave', stopScrolling);
 
-        document.querySelector(".left").addEventListener("mousedown", () => startScrolling(1));
-        document.querySelector(".right").addEventListener("mousedown", () => startScrolling(-1));
-        window.addEventListener("mouseup", stopScrolling);
-        window.addEventListener("mouseleave", stopScrolling);
-
+  // Start auto-scroll on load
+  startAutoMove();
+});
     </script>
+
     
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
