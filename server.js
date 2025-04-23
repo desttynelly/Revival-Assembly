@@ -19,7 +19,8 @@ const app = express();
 
 // mongoose.connect(process.env.MONGODB_CONNECTION).then(()=>{console.log("Database Connected")}).catch((err)=>{console.log(err)});
 
-mongoose.connect(process.env.MONGODB_CONNECTION).then(()=>{console.log("Database Connected")}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MONGODB_CONNECTION).then(()=>{
+  console.log("Database Connected")}).catch((err)=>{console.log(err)});
 app.use(express.json()); // For parsing JSON body
 app.use(session({
     secret: 'Dien', // Replace with your own secret
@@ -120,6 +121,12 @@ app.get("/blog", async (req, res) => {
       console.error("Error fetching pictures:", error);
       res.render("404", { Pic: [] });
   }
+});
+
+app.get("/blog/blog1", async (req, res) => {
+  
+      res.render("blog/blog1");
+  
 });
 
 app.get('/about',(req,res)=>{

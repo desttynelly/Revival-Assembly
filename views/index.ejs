@@ -200,13 +200,17 @@
 
 
     <div class="pictures">
-
+<div class="ip">
         <% if (Pic && Pic.length > 0) { %>
             <% Pic.forEach(function (pic) { %>
-                <img src="<%= pic.picture %>" alt="Image">
+                
+                    <img src="<%= pic.image1 %>" alt="Image">
+                
+                
             <% }); %>
+        </div>
         <% } else { %>
-            <p class="nob">No blog yet.</p>
+            <p class="nob">No Picture yet.</p>
         <% } %>
         
 
@@ -226,7 +230,7 @@
         <div class="slider" id="slider">
             <% if (Quo && Quo.length > 0) { %>
                 <% Quo.forEach(function (quo) { %>
-                    <img src="<%= quo.quotes %>" alt="Image">
+                    <img src="<%= quo.image1 %>" alt="Image">
                 <% }); %>
             <% } %>
         </div>

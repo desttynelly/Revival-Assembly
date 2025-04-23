@@ -21,6 +21,29 @@ const streamifier  = require("streamifier");
 
 
 
+// Helper function outside the controller
+const handleImageUpload = (file) => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        resource_type: 'auto',
+        folder: 'your_folder_name', // Change if needed
+      },
+      
+      (error, result) => {
+        if (error) {
+          console.error("Cloudinary Upload Error:", error);
+          reject(new Error('Error uploading image to Cloudinary: ' + error.message));
+        } else {
+          console.log("Cloudinary Upload Result:", result);
+          resolve(result);
+        }
+      }
+    );
+
+    streamifier.createReadStream(file.buffer).pipe(stream);
+  });
+};
 
 const give = async (req, res) => {
   try {
@@ -135,208 +158,65 @@ const give = async (req, res) => {
 };
 
 
+
+
 const Pictures = async (req, res) => {
-    try {
-      const { picture} = req.body;
-  
-      if (!picture ) {
-        // res.render("invest/Investment/404", {user: req.session.user})
-        return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
-      }
-  
-      let imageURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-  
-      // If an image file is provided
-      if (req.file) {
-        // Wrap the Cloudinary upload in a promise
-       
-          const uploadStream = cloudinary.uploader.upload_stream({ resource_type: 'image' }, (error, result) => {
-            if (error) {
-                return res.status(500).send('Error uploading image to Cloudinary');
-            }
-           imageURL = result.secure_url;
+  console.log("FILES:", req.files);
+  console.log("BODY:", req.body);
 
-        
-             
-           createuser()
+  const image1 = req.files?.image1 ? req.files.image1[0] : null;
 
-          });
-          
-          streamifier.createReadStream(req.file.buffer).pipe(uploadStream);        
-      }else{
-        createuser()
-    
-        
-      }
-
-      async function createuser(){
-
-         // Create a new user with the provided data and the image URL if available
-      const user = new Pic({
-        picture
-      });
-
-
-        try {
-            await user.save();
-            // Generate a JWT token
-            const token = jwt.sign({ id: user._id}, 'Adain', { expiresIn: '1h' });
-
-            req.session.user = {
-                id: user._id,
-                picture: user.picture,
-               
-                
-                // Add other fields as needed
-            };
-            const returnUrl = req.headers.referer || "/admin/admin"; // Fallback to home if no referrer
-            return res.redirect("/admin/admin");
-            // res.status(200).json({
-            //     status: "Success",
-            //     message: "Login successful",
-            //     token,
-            //     user: {
-            //         id: user._id,
-            //         email: user.email,
-            //         fullname: user.fullname,
-            //         phoneNumber: user.phoneNumber,
-            //         country: user.country,
-            
-            //         notificationsCount: user.notificationsCount,
-            //         referralCount: user.referralCount,
-            //         referredUsers: user.referredUsers,
-            //         points: user.points,
-            //         accountName: user.accountName
-            //     }
-            // });
-            
-        } catch (error) {
-          // res.render("invest/Investment/404", {user: req.session.user})
-            // console.error('Error saving product:', error);
-                res.status(500).send('Error saving product');
-        }
-      }
-  
-     
-  
-      
-  
-     
-    } catch (error) {
-      console.error("Error during signup:", error);
-  
-      // Handle errors and ensure only one response
-      if (!res.headersSent) {
-        res.status(500).json({ status: "Failed", message: error.message });
-      }
+  try {
+    if (!image1) {
+      return res.status(400).json({ message: "All fields and all images are required." });
     }
 
-    
+    const image1Url = await handleImageUpload(image1);
 
- 
+    const picture = new Pic({
+      image1: image1Url?.secure_url // ✅ correct
+    });
+
+    await picture.save();
+
+    const returnUrl = req.headers.referer || "/";
+    return res.redirect(returnUrl);
+  } catch (error) {
+    console.error("Error in pic:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
 
 
 
+
+
+
 const Quotes = async (req, res) => {
+  console.log("FILES:", req.files);
+  console.log("BODY:", req.body);
+
+  const image1 = req.files?.image1 ? req.files.image1[0] : null;
+
   try {
-    const { quotes} = req.body;
-
-    if (!quotes ) {
-      // res.render("invest/Investment/404", {user: req.session.user})
-      return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+    if (!image1) {
+      return res.status(400).json({ message: "All fields and all images are required." });
     }
 
-    let imageURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    const image1Url = await handleImageUpload(image1);
 
-    // If an image file is provided
-    if (req.file) {
-      // Wrap the Cloudinary upload in a promise
-     
-        const uploadStream = cloudinary.uploader.upload_stream({ resource_type: 'image' }, (error, result) => {
-          if (error) {
-              return res.status(500).send('Error uploading image to Cloudinary');
-          }
-         imageURL = result.secure_url;
-
-      
-           
-         createuser()
-
-        });
-        
-        streamifier.createReadStream(req.file.buffer).pipe(uploadStream);        
-    }else{
-      createuser()
-  
-      
-    }
-
-    async function createuser(){
-
-       // Create a new user with the provided data and the image URL if available
-    const user = new Quo({
-      quotes
+    const quotes = new Quo({
+      image1: image1Url?.secure_url // ✅ correct
     });
 
+    await quotes.save();
 
-      try {
-          await user.save();
-          // Generate a JWT token
-          const token = jwt.sign({ id: user._id}, 'Adain', { expiresIn: '1h' });
-
-          req.session.user = {
-              id: user._id,
-              quotes: user.quotes,
-             
-              
-              // Add other fields as needed
-          };
-          const returnUrl = req.headers.referer || "/admin/admin"; // Fallback to home if no referrer
-          return res.redirect("/admin/admin");
-          // res.status(200).json({
-          //     status: "Success",
-          //     message: "Login successful",
-          //     token,
-          //     user: {
-          //         id: user._id,
-          //         email: user.email,
-          //         fullname: user.fullname,
-          //         phoneNumber: user.phoneNumber,
-          //         country: user.country,
-          
-          //         notificationsCount: user.notificationsCount,
-          //         referralCount: user.referralCount,
-          //         referredUsers: user.referredUsers,
-          //         points: user.points,
-          //         accountName: user.accountName
-          //     }
-          // });
-          
-      } catch (error) {
-        // res.render("invest/Investment/404", {user: req.session.user})
-          // console.error('Error saving product:', error);
-              res.status(500).send('Error saving product');
-      }
-    }
-
-   
-
-    
-
-   
+    const returnUrl = req.headers.referer || "/";
+    return res.redirect(returnUrl);
   } catch (error) {
-    console.error("Error during signup:", error);
-
-    // Handle errors and ensure only one response
-    if (!res.headersSent) {
-      res.status(500).json({ status: "Failed", message: error.message });
-    }
+    console.error("Error in pic:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
-
-  
-
-
 };
 
 
@@ -672,20 +552,27 @@ const testi = async (req, res) => {
 
 
 const blog = async (req, res) => {
-  const { bloimg, blotitle, bloinfo, blopimg, blopname, blodate } = req.body;
+
+  console.log("FILES:", req.files);
+  console.log("BODY:", req.body);
+  
+  const { blotitle, bloinfo, blopimg, blopname, blodate } = req.body;
+  const image1 = req.files?.image1 ? req.files.image1[0] : null;
 
 
 
   try {
-      if (!bloimg || !blotitle || !bloinfo || !blopimg || !blopname || !blodate) {
+      if (!image1 || !blotitle || !bloinfo || !blopimg || !blopname || !blodate) {
           return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
       }
 
    
 
+      const image1Url = await handleImageUpload(image1);
+
       // Create new user document
       const user = new Blog({
-          bloimg,
+          image1: image1Url?.secure_url, // ✅ correct
           blotitle,
           bloinfo,
           blopimg,
@@ -699,7 +586,7 @@ const blog = async (req, res) => {
 
           req.session.user = {
               id: user._id,
-              bloimg: user.bloimg,
+              image1: user.image1,
               blotitle: user.blotitle,
               bloinfo: user.bloinfo,
               blopimg: user.blopimg,

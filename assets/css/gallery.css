@@ -67,15 +67,18 @@ header{
 .pictures,
 .quotes{
     width: 100%;
+}
+.pictures .ip,
+.quotes .ip{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
-.pictures img,
-.quotes img{
+.pictures .ip img,
+.quotes .ip img{
     width: 25%;
     min-width: 150px;
-    margin: auto;
-    justify-content: center;
     object-fit: cover;
 }
 
@@ -85,7 +88,6 @@ header{
     width: 50%;
     min-width: 150px;
     margin: auto;
-    justify-content: center;
     object-fit: cover;
 }
 }
@@ -96,7 +98,7 @@ header{
     width: 100%;
     min-width: 150px;
     margin: auto;
-    justify-content: center;
+    justify-content: space-evenly;
     object-fit: cover;
 }
 }

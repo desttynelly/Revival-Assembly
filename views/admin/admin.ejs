@@ -136,7 +136,7 @@
 
             <div class="blogs">
 
-                <form action="/api/auth/blog" method="post">
+                <form action="/api/auth/blog" method="post" enctype="multipart/form-data">
 
 
                     <div class="close">
@@ -145,7 +145,7 @@
 
                     <p class="headdp">Blog</p>
                     <label for="blogimg">Blog Image</label>
-                    <input type="text" name="bloimg" class="bloimg" placeholder="image url">
+                    <input type="file" name="image1" class="bloimg" placeholder="image url">
                     <br>
 
                     <label for="blotitle">Blog Title</label>
@@ -177,13 +177,14 @@
 
 
             <div class="pixf">
-                <form action="/api/auth/pictures" method="post">
+                <form action="/api/auth/pictures" method="post" enctype="multipart/form-data">
+
                     <div class="close">
                         <img src="/images/close-svgrepo-com.png" alt="">
                     </div>
 
                     <label for="Pictures">Pictures</label>
-                    <input type="text" name="picture" id="picture" placeholder="insert pic url">
+                    <input type="file" name="image1"  id="image1" required>
 
                     <div class="btn">
                         <button type="submit">Post</button>
@@ -192,14 +193,14 @@
             </div>
 
             <div class="quof">
-                <form action="/api/auth/quotes" method="post">
+                <form action="/api/auth/quotes" method="post" enctype="multipart/form-data">
 
                     <div class="close">
                         <img src="/images/close-svgrepo-com.png" alt="">
                     </div>
 
                     <label for="Quotes">Quotes</label>
-                    <input type="text" name="quotes" id="quotes" placeholder="insert quote pic url">
+                    <input type="file" name="image1" id="quotes" placeholder="insert quote pic url">
 
                     <div class="btn">
                         <button type="submit">Post</button>
