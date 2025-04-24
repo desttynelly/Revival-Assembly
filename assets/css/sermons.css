@@ -66,10 +66,11 @@ header{
     font-size: 30px;
     font-weight: 600;
     color: #fff;
+    margin-bottom: 50px;
 }
 .prev-serm .serm{
     margin: auto;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .prev-serm .d-sermon{
     display: flex;

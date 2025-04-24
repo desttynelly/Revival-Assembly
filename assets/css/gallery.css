@@ -83,8 +83,8 @@ header{
 }
 
 @media (max-width: 600px){
-    .pictures img,
-    .quotes img{
+    .pictures .ip img,
+.quotes .ip img{
     width: 50%;
     min-width: 150px;
     margin: auto;
@@ -93,8 +93,8 @@ header{
 }
 
 @media (max-width: 300px){
-    .pictures img,
-    .quotes img{
+    .pictures .ip img,
+.quotes .ip img{
     width: 100%;
     min-width: 150px;
     margin: auto;
