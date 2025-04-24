@@ -137,17 +137,7 @@ header{
 
 @media (max-width: 600px){
 
-    .live .d-live iframe{
-        width: 100%;
-        /* max-width: 950px; */
-        height: 100%;
-        background-image: url(/images/technology-stack-for-web-applica.png);
-        background-size: cover; /* Ensures it covers the entire screen */
-        background-position: center; /* Keeps the image centered */
-        background-repeat: no-repeat; /* Prevents tiling */
-        
-        transition: all 0.3s ease-in-out;
-    }
+   
 
     .prev-serm{
         margin: auto;
