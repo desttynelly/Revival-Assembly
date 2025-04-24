@@ -315,10 +315,12 @@
     justify-self: center;
     margin: auto;
     justify-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-top: 50px;
 }
 .upcoming .d-upcome .events{
-    width: 300px;
+    width: 90%;
+    max-width: 300px;
 }
 .upcoming .d-upcome .events section{
     width: 100%;
