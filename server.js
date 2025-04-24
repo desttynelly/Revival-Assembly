@@ -62,8 +62,9 @@ app.use('/api/auth', userRoutes)
 app.get("/", async (req, res) => {
     try {
         const pictures = await Pic.find().sort({ createdAt: -1 }).limit(8); 
-        const quotes = await Quo.find();
-        res.render("index", { Pic: pictures, Quo: quotes });
+        const quotes = await Quo.find().sort({ createdAt: -1 }).limit(13);
+        const event = await Event.find().sort({ createdAt: -1 }).limit(3);
+        res.render("index", { Pic: pictures, Quo: quotes, event });
     } catch (error) {
         console.error("Error fetching pictures:", error);
         res.render("index", { Pic: [] });
@@ -91,7 +92,8 @@ app.get("/Sermon", async (req, res) => {
 
 app.get("/events", async (req, res) => {
   try {
-      const event = await Event.find(); 
+    
+      const event = await Event.find().sort({ createdAt: -1 });
       res.render("events", { event });
   } catch (error) {
       console.error("Error fetching pictures:", error);
@@ -163,8 +165,8 @@ app.get('/port',(req,res)=>{
 
 app.get("/gallery", async (req, res) => {
   try {
-      const pictures = await Pic.find(); 
-      const quotes = await Quo.find();
+      const pictures = await Pic.find().sort({ createdAt: -1 }); 
+      const quotes = await Quo.find().sort({ createdAt: -1 });
       res.render("gallery", { Pic: pictures, Quo: quotes });
   } catch (error) {
       console.error("Error fetching pictures:", error);

@@ -37,7 +37,7 @@
 
                 <div class="n-sermon">
 
-                    <form action="/api/auth/sermon" method="post">
+                    <form action="/api/auth/sermon" method="post" enctype="multipart/form-data"> 
 
                         <div class="close">
                             <img src="/images/close-svgrepo-com.png" alt="">
@@ -45,7 +45,7 @@
 
                         <p class="headdp">normal sermon</p>
                         <label for="iframe">Sermon Image:</label>
-                        <input type="text" name="simg" class="link" placeholder="image Url">
+                        <input type="file" name="image1" class="link" placeholder="image Url">
                         <br>
                         <label for="title">Title:</label>
                         <input type="text" name="title" class="title" placeholder="Preaching title">
@@ -71,13 +71,13 @@
 
 
             <div class="eventin">
-                <form action="/api/auth/event" method="post">
+                <form action="/api/auth/event" method="post" enctype="multipart/form-data">
                     <div class="close">
                         <img src="/images/close-svgrepo-com.png" alt="">
                     </div>
                     <p class="headdp">Events</p>
                     <label for="eventimg">Event Image:</label>
-                    <input type="text" name="eimg" class="eimg" placeholder="event Img">
+                    <input type="file" name="image1" class="eimg" placeholder="event Img">
                     <br>
                     <label for="eventhead">Event Title:</label>
                     <input type="text" name="etitle" class="etitle" placeholder="event title">
@@ -155,10 +155,6 @@
 
                     <label for="bloinfo">Blog Info</label>
                     <input type="text" name="bloinfo" class="bloinfo" placeholder="Blog Info">
-                    <br>
-
-                    <label for="blopimg">Blog Poster Image</label>
-                    <input type="text" name="blopimg" class="blopimg" placeholder="poster img url">
                     <br>
 
                     <label for="blopname">Blog Poster Name</label>

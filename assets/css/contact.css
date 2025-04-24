@@ -95,9 +95,19 @@ h2 {
 .contact-info {
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .contact-info p {
     margin: 5px 0;
+    width: 60%;
+}
+.contact-info a {
+    color: black;
+}
+.social-links{
+    width: 60%;
 }
 .social-links a {
     margin: 0 10px;

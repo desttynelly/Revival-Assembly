@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-    eimg: {
+    image1: {
         type: String,
         required: true
     },
@@ -21,7 +21,11 @@ const userSchema = new mongoose.Schema({
     date: {
         type: String,
         required: true
-    }
+    },
+    createdAt: { 
+        type: Date, 
+        default: Date.now
+    },
 }, {
     timestamps: true
 });

@@ -259,38 +259,33 @@
         <h1 class="headdp">Upcoming</h1>
 
         <div class="d-upcome">
-            <div class="events">
-                <section>
-                    <div>
-                    <p>JUL</p>
-                    <p class="num">19</p>
-                    </div>
-                </section>
-                <p class="day">July 19, 2025</p>
-                <p class="ab">Azusa Conference</p>
-            </div>
+           
 
-            <div class="events">
-                <section>
-                    <div>
-                    <p>JUL</p>
-                    <p class="num">19</p>
-                    </div>
-                </section>
-                <p class="day">July 19, 2025</p>
-                <p class="ab">Azusa Conference</p>
-            </div>
-
-            <div class="events">
-                <section>
-                    <div>
-                    <p>JUL</p>
-                    <p class="num">19</p>
-                    </div>
-                </section>
-                <p class="day">July 19, 2025</p>
-                <p class="ab">Azusa Conference</p>
-            </div>
+            <% if (event && event.length > 0) { %>
+                <% event.forEach(function (event) { 
+                    // Convert string date to a JS Date object
+                    const fullDate = new Date(event.date);
+                    const month = fullDate.toLocaleString('default', { month: 'short' }).toUpperCase(); // "JUN"
+                    const day = fullDate.getDate(); // 12
+                %>
+            
+                <div class="events">
+                    <section style="background-image: url(<%= event.image1 %>);">
+                        <div>
+                            <p><%= month %></p>
+                            <p class="num"><%= day %></p>
+                        </div>
+                    </section>
+                    <p class="title"><%= event.etitle %></p>
+                    <p class="day"><%= event.date %></p>
+                    <p class="ab"><%= event.time %></p>
+                </div>
+            
+                <% }); %>  
+            <% } else { %>
+                <p class="nob">No Event yet.</p>
+            <% } %>
+   
         </div>
 
 
@@ -301,29 +296,7 @@
 
 
 
-    <div class="footer">
-
-        <div class="top">
-            <p class="address">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam amet vero autem modi corrupti eum dolorum 
-            </p>
-             <div class="aa">
-                  <a href="tel:08062295161">08062295161</a>
-            <a href="mailto:pastorobclem@gmail.com">|   pastorobclem@gmail.com</a>
-            </div>
-        </div>
-        <div class="ar">
-            <p>&copy;2025 Revival Assembly Abuja. All Right Reserved. Site designed by <a href="">Destty Nelly</a></p>
-        </div>
-
-        <div class="social">
-            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
-        </div>
-    </div>
-
+            <%- include("_footer") %>
 
 
      <script src="/js/giveo.js"></script>
@@ -411,7 +384,7 @@
 });
     </script>
 
-    
+
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
 

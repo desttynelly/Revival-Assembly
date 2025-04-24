@@ -22,7 +22,7 @@ body {
 /* Hero Section */
 .hero {
     margin-top: 100px;
-    background: url('https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/475847392_1029723255846000_5183173440615284011_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFBMFOGgQ_iQKpSTtD82a9ARb6r-LdBFCNFvqv4t0EUI45ZNzUI6BpCgiRfwu3PrrqNK8MTe_K17450-xvZMbxe&_nc_ohc=yFiu7dugs_sQ7kNvgEhd6Vl&_nc_oc=Adj2nFLiqn9jPZTDTKPwuMhjKc-27VvGNdIQuh4uHxNzdEfN9Z6WnQsaVxKMqWELfNM&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=A5QsTTnHYg6TmY522LPGIax&oh=00_AYBaPGdTuapyVYY1asDb0A_ZJ1sNG1mAhS0jboAL7Ba0Lw&oe=67C3D9A0') center/cover no-repeat;
+    background: url('/images/fullchurch.png') center/cover no-repeat;
     min-height: 50vh;
     height: auto;
     min-height: 200px;
@@ -84,6 +84,13 @@ body {
     height: 200px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    object-fit: cover;
+}
+.leader .papa{
+    object-position: 0vmin 0vw;
+}
+.leader .mama{
+    object-position: 0vmin -4vw;
 }
 
 .btn button{

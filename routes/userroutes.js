@@ -34,10 +34,12 @@ const upload = multer({ storage: storage }).fields([
 ]);
 
 
+
+
 router.post('/admin/login', logIn);
 router.post('/lives', LiveS);
-router.post('/sermon', pserm);
-router.post('/event', event);
+router.post('/sermon', upload, pserm);
+router.post('/event', upload, event);
 router.post('/blog', upload, blog);
 router.post('/testi', testi);
 router.post('/give', give);

@@ -411,20 +411,27 @@ const LiveS = async (req, res) => {
 
 
 const pserm = async (req, res) => {
-  const { simg, title, preacher, ylink } = req.body;
+
+    console.log("FILES:", req.files);
+  console.log("BODY:", req.body);
+
+  const { title, preacher, ylink } = req.body;
+  const image1 = req.files?.image1 ? req.files.image1[0] : null;
 
 
 
   try {
-      if (!simg || !title || !preacher || !ylink) {
+      if (!image1 || !title || !preacher || !ylink) {
           return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
       }
 
    
 
+      const image1Url = await handleImageUpload(image1);
+
       // Create new user document
       const user = new Pserm({
-          simg,
+          image1: image1Url?.secure_url, // ✅ correct
           title,
           preacher,
           ylink,
@@ -436,7 +443,7 @@ const pserm = async (req, res) => {
 
           req.session.user = {
               id: user._id,
-              simg: user.simg,
+              image1: user.image1,
               title: user.title,
               preacher: user.preacher,
               ylink: user.ylink,
@@ -458,20 +465,23 @@ const pserm = async (req, res) => {
 
 
 const event = async (req, res) => {
-  const { eimg, etitle, etext, time, date } = req.body;
+  const { etitle, etext, time, date } = req.body;
+  
+  const image1 = req.files?.image1 ? req.files.image1[0] : null;
 
 
 
   try {
-      if (!eimg || !etitle || !etext) {
+      if (!image1 || !etitle || !etext) {
           return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
       }
 
    
+      const image1Url = await handleImageUpload(image1);
 
       // Create new user document
       const user = new Event({
-          eimg,
+          image1: image1Url?.secure_url, // ✅ correct
           etitle,
           etext,
           time,
@@ -484,7 +494,7 @@ const event = async (req, res) => {
 
           req.session.user = {
               id: user._id,
-              eimg: user.eimg,
+              image1: user.image1,
               etitle: user.etitle,
               etext: user.etext,
               time: user.time,
@@ -555,14 +565,14 @@ const blog = async (req, res) => {
 
   console.log("FILES:", req.files);
   console.log("BODY:", req.body);
-  
-  const { blotitle, bloinfo, blopimg, blopname, blodate } = req.body;
+
+  const { blotitle, bloinfo, blopname, blodate } = req.body;
   const image1 = req.files?.image1 ? req.files.image1[0] : null;
 
 
 
   try {
-      if (!image1 || !blotitle || !bloinfo || !blopimg || !blopname || !blodate) {
+      if (!image1 || !blotitle || !bloinfo || !blopname || !blodate) {
           return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
       }
 
@@ -575,7 +585,6 @@ const blog = async (req, res) => {
           image1: image1Url?.secure_url, // ✅ correct
           blotitle,
           bloinfo,
-          blopimg,
           blopname,
           blodate
       });
@@ -589,7 +598,6 @@ const blog = async (req, res) => {
               image1: user.image1,
               blotitle: user.blotitle,
               bloinfo: user.bloinfo,
-              blopimg: user.blopimg,
               blopname: user.blopname,
               blodate: user.blodate
           };

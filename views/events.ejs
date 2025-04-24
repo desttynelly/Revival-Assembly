@@ -112,73 +112,38 @@
         <div class="realevent">
 
             
+          
+
+
+            <% if (event && event.length > 0) { %>
+                <% event.forEach(function (event) { %>
+    
             <div class="d-event">
-                <img src="https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/449482940_878041271014200_7085102089047616933_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHKV7G3mVILLkXGunscZw07lnBpq03r4sWWcGmrTevixTzx4suYv_SFhGXEqOvM_F27waX8vBhNoIdtV3_VHT35&_nc_ohc=z1QemGlBY6kQ7kNvgF8ausb&_nc_oc=Adi5PsyKt2vvqClYmrsLifPtohSQ2X-d-2XMzcurUlxr3IsAxMnV7XwyX8s29oZp3bY&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AZ3Jq327l7NfG3Qmd1GZ6gE&oh=00_AYAb6BdmZ1bzL_uyXVxb3_BIn2SKU1xwfezBzmmKbA8kmA&oe=67C3CE11" alt="">
-                <p class="eventheadp">Asuza Conference</p>
+                <img src="<%= event.image1 %>" alt="">
+                <p class="eventheadp"><%= event.etitle %></p>
 
                 <section class="bodyp">
-                    <p class="eventbodyp">Whether it’s an emergency or routine checkup, we connect you to the nearest and most suitable medical facilities, ensuring you get the care you need when you need it.
-                        Find the Care You Need, Fast
-                    </p>
+                    <p class="eventbodyp"><%= event.etext %></p>
+                </section>
+
+                <section class="td">
+                    <p class="time"><%= event.time %></p>
+                    <p class="date"><%= event.date %></p>
                 </section>
                 
 
-                <div class="btn">
+                <section class="btn">
                     <button class="keep">Keep date</button>
-                </div>
+                </section>
          
                 
             </div>
     
-           
-
-
-                <div class="d-event">
-                    <img src="https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/449482940_878041271014200_7085102089047616933_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHKV7G3mVILLkXGunscZw07lnBpq03r4sWWcGmrTevixTzx4suYv_SFhGXEqOvM_F27waX8vBhNoIdtV3_VHT35&_nc_ohc=z1QemGlBY6kQ7kNvgF8ausb&_nc_oc=Adi5PsyKt2vvqClYmrsLifPtohSQ2X-d-2XMzcurUlxr3IsAxMnV7XwyX8s29oZp3bY&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AZ3Jq327l7NfG3Qmd1GZ6gE&oh=00_AYAb6BdmZ1bzL_uyXVxb3_BIn2SKU1xwfezBzmmKbA8kmA&oe=67C3CE11" alt="">
-                    <p class="eventheadp">Asuza Conference</p>
-    
-                    <section class="bodyp">
-                        <p class="eventbodyp">Whether it’s an emergency or routine checkup, we connect you to the nearest and most suitable medical facilities, ensuring you get the care you need when you need it.
-                            Find the Care You Need, Fast
-                        </p>
-                    </section>
                     
-
-                    <div class="btn">
-                        <button class="keep">Keep date</button>
-                    </div>
-             
-                    
-                </div>
-            
-
-
-
-
-                <div class="d-event">
-                    <img src="https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/449482940_878041271014200_7085102089047616933_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHKV7G3mVILLkXGunscZw07lnBpq03r4sWWcGmrTevixTzx4suYv_SFhGXEqOvM_F27waX8vBhNoIdtV3_VHT35&_nc_ohc=z1QemGlBY6kQ7kNvgF8ausb&_nc_oc=Adi5PsyKt2vvqClYmrsLifPtohSQ2X-d-2XMzcurUlxr3IsAxMnV7XwyX8s29oZp3bY&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AZ3Jq327l7NfG3Qmd1GZ6gE&oh=00_AYAb6BdmZ1bzL_uyXVxb3_BIn2SKU1xwfezBzmmKbA8kmA&oe=67C3CE11" alt="">
-                    <p class="eventheadp">Asuza Conference</p>
-    
-                    <section class="bodyp">
-                        <p class="eventbodyp">Whether it’s an emergency or routine checkup, we connect you to the nearest and most suitable medical facilities, ensuring you get the care you need when you need it.
-                            Find the Care You Need, Fast
-                        </p>
-                    </section>
-                    
-
-                    <div class="btn">
-                        <button class="keep">Keep date</button>
-                    </div>
-             
-                    
-                </div>
-
-
-
-
-            
-
-
+                <% }); %>
+            <% } else { %>
+                <p class="nob">No Event yet.</p>
+            <% } %>
    
         </div>
 
@@ -194,28 +159,7 @@
 
 
 
-<div class="footer">
-
-    <div class="top">
-        <p class="address">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam amet vero autem modi corrupti eum dolorum 
-        </p>
-         <div class="aa">
-              <a href="tel:08062295161">08062295161</a>
-        <a href="mailto:pastorobclem@gmail.com">|   pastorobclem@gmail.com</a>
-        </div>
-    </div>
-    <div class="ar">
-        <p>&copy;2025 Revival Assembly Abuja. All Right Reserved. Site designed by <a href="">Destty Nelly</a></p>
-    </div>
-
-    <div class="social">
-        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
-    </div>
-</div>
+<%- include("_footer") %>
 
 
 

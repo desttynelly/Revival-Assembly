@@ -37,7 +37,7 @@ header{
     align-items: center;
     justify-content: center;
     height: 300px;
-    background-image: url(https://scontent.fabv2-1.fna.fbcdn.net/v/t39.30808-6/475465182_1029723265845999_3923748709068172577_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHuKHPl8TXsmDuEntsqUU8S12h0xJe_skbXaHTEl7-yRrn2oujzzXUAhZCMEloe-15Mihyunn_lOFI95i1OcpjL&_nc_ohc=87bJPjSmhD8Q7kNvgH_SPYc&_nc_oc=AdhKgzzloPaagHAlIKFT-jGb17pq5nbiu531kJa3C04O_Ust5wnfWo0yBznQaltfdMk&_nc_zt=23&_nc_ht=scontent.fabv2-1.fna&_nc_gid=AbXqOGF7-PhHVer4bNQsXr6&oh=00_AYCmGmmBbtP8dKBy-dTA-W6wvrz8hfUZ_FztE2H1655aAA&oe=67C3E7E8);
+    background-image: url(/images/eventp.png);
     background-size: cover;
     background-position: center;
     margin-bottom: 100px;
@@ -97,6 +97,16 @@ header{
     text-align: start;
     overflow: hidden;
 }
+.events .d-events .realevent div .td{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.events .d-events .realevent div .td p{
+    font-size: 12px;
+}
 .events .d-events .realevent .d-event .btn{
     width: 120px;
     height: 40px;
@@ -106,6 +116,8 @@ header{
 .events .d-events .realevent .d-event .btn button{
     width: 100%;
     height: 100%;
+    color: var(--white);
+    font-weight: 500;
 }
 
 

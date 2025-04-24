@@ -14,10 +14,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    blopimg: {
-        type: String,
-        required: true
-    },
     blopname: {
         type: String,
         required: true
