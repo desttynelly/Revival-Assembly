@@ -125,10 +125,18 @@ app.get("/blog", async (req, res) => {
   }
 });
 
-app.get("/blog/blog1", async (req, res) => {
-  
-      res.render("blog/blog1");
-  
+
+app.get('/blog/:id', async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      res.render("notfound404");
+    }
+    res.render("blog/blog1", { blog });
+  } catch (err) {
+    console.error('Error fetching blog:', err);
+    res.status(500).send('Server error');
+  }
 });
 
 app.get('/about',(req,res)=>{

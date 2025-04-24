@@ -91,6 +91,9 @@ header{
     height: 50px;
     overflow: hidden;
 }
+.blog .d-blog .blog-post .blog-p a{
+    color: red;
+}
 .blog .d-blog .blog-post .blog-p .two-d{
     display: flex;
     width: 100%;

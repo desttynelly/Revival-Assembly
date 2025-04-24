@@ -9,14 +9,142 @@ header{
 }
 
 
-.event-info{
-    color: #fff;
-    margin: auto;
-    margin-top: 150px;
-    width: 90%;
-    max-width: 1000px;
-}
-.event-info img{
+.blog-detail-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Georgia', serif; /* Church-friendly font */
+  }
+  
+  /* Subtle cross motif in the background */
+  .blog-detail-container::before {
+    content: '✝';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 50px;
+    color: rgba(189, 147, 96, 0.1); /* Gold with low opacity */
+    z-index: 0;
+  }
+  
+  .blog-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .blog-header a{
+    color: black;
+  }
+  .blog-header .fa-chevron-left{
+    margin-right: auto;
     width: 100%;
-    height: 300px;
-}
+    text-align: start;
+  }
+  
+  .blog-header h1 {
+    font-size: 32px;
+    color: #4a3728; /* Deep brown for warmth */
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .blog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+    color: #7f6a55; /* Softer brown */
+  }
+  
+  .blog-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .blog-meta i {
+    color: #bd9360; /* Gold for icons */
+  }
+  
+  .blog-image {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .blog-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-image img:hover {
+    transform: scale(1.02);
+  }
+  
+  .blog-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #5c4b38; /* Darker brown for readability */
+    margin-bottom: 30px;
+  }
+  
+  .blog-content p {
+    margin-bottom: 15px;
+  }
+  
+  .blog-footer {
+    text-align: center;
+  }
+  
+  .btn-back {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff0000; /* Gold button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-back:hover {
+    background-color: #a07a49; /* Darker gold on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .blog-detail-container {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    .blog-header h1 {
+      font-size: 24px;
+    }
+  
+    .blog-meta {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .blog-content {
+      font-size: 15px;
+    }
+  
+    .btn-back {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }

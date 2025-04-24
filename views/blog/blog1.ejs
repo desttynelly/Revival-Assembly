@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Revival Abuja</title>
 </head>
 <body>
@@ -90,34 +91,33 @@
 
 
 
-    <div class="event-info">
-        <img src="/images/panorama-of-church-interior.png" alt="">
-        <!-- <p class="headdp">Children's Day Program</p> -->
-        <p class="date">May 27, 2025</p>
+    <div class="blog-detail-container">
+        <div class="blog-header">
 
-
-        <div class="d-info">
-          
-            <p>
-                <h1>Lorem ipsum dolor sit amet consectetur </h1>
-                <p>adipisicing elit. Aspernatur repellat incidunt eum, maxime soluta officia ratione consectetur vel ea magni quo laboriosam quod ad aperiam sapiente, molestias eligendi nostrum neque?</p> 
-
-                <b>Lorem ipsum dolor sit amet consectetur </b> 
-                <ul>
-                    <li>adipisicing elit. Aspernatur repellat incidunt eum, maxime soluta officia ratione consectetur </li>
-                    <li>vel ea magni quo laboriosam quod ad aperiam sapiente, molestias eligendi nostrum neque?</li>
-
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur repellat incidunt eum, maxime </li>
-                </ul>
-                
-    
-                <b>soluta officia ratione consectetur</b> <br> vel ea magni quo laboriosam quod ad aperiam sapiente, molestias eligendi nostrum neque?
-    
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur repellat incidunt eum, maxime soluta officia ratione consectetur vel ea magni quo laboriosam quod ad aperiam sapiente, molestias eligendi nostrum neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. At itaque soluta aut voluptatibus! Vitae magni ipsum voluptatibus mollitia accusantium facere totam tempora dolore nobis, amet dignissimos, pariatur minima! Officiis, odio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur minus, ab dolorum iste sed praesentium velit veritatis accusantium veniam? Adipisci, possimus praesentium fugit temporibus molestias dolorem eos voluptatum suscipit veniam.
-            </p>
-
+            <a href="/blog"><i class="fa fa-chevron-left"></i></a>
+          <h1><%= blog.blotitle %></h1>
+          <div class="blog-meta">
+            <span class="author">
+              <i class="fas fa-user"></i> <%= blog.blopname %>
+            </span>
+            <span class="date">
+              <i class="fas fa-calendar-alt"></i> <%= blog.blodate %>
+            </span>
+          </div>
         </div>
-    </div>
+      
+        <div class="blog-image">
+          <img src="<%= blog.image1 %>" alt="<%= blog.blotitle %>">
+        </div>
+      
+        <div class="blog-content">
+          <p><%= blog.bloinfo %></p>
+        </div>
+      
+        <div class="blog-footer">
+          <a href="/blogs" class="btn-back">Back to Blogs</a>
+        </div>
+      </div>
 
     
 
