@@ -92,7 +92,7 @@ header{
 }
 }
 
-@media (max-width: 300px){
+@media (max-width: 400px){
     .pictures .ip img,
 .quotes .ip img{
     width: 100%;
