@@ -101,8 +101,47 @@
 
 
 
-
-
+    <div class="update">
+        <video src="/images/Fire Burning Hot Sparks Rising Background Free Video.mp4" autoplay muted loop></video>
+        <div class="utext">
+          <h2 class="eventtop">Azusa 26</h2>
+          <p>Every year, we gather with one heart and one spirit at Azasa, a sacred time of refreshing, revival, and revelation. It's more than a program — it’s a divine appointment where lives are transformed, faith is reignited, and destinies are realigned in God’s presence.  
+          Come expectant. Leave changed.</p>
+          <p class="date">July 21, 2025, 07:00am</p>
+    
+          <div class="countdown">
+            <section class="days">
+              <h1 id="days">0</h1>
+              <p>Days</p>
+            </section>
+            <section class="hours">
+              <h1 id="hours">0</h1>
+              <p>Hours</p>
+            </section>
+            <section class="minutes">
+              <h1 id="minutes">0</h1>
+              <p>Minutes</p>
+            </section>
+            <section class="seconds">
+              <h1 id="seconds">0</h1>
+              <p>Seconds</p>
+            </section>
+          </div>
+    
+          <div class="keep-date">
+            <button
+              class="keep"
+              data-date="July 17, 2025"
+              data-time="7:00am"
+              data-title="Azusa 26"
+              data-location="1-7, Revival Close, Off Cocoa Industrial Road, Cocoa Bus Stop Ogba Ikeja Ikeja, Lagos 100001"
+            >
+              Keep Date
+            </button>
+             <button class="closes">Close</button>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -305,6 +344,22 @@
 
      
     <script>
+        // Close button functionality
+        document.addEventListener("DOMContentLoaded", function () {
+          const closeBtn = document.querySelector(".closes");
+          const updateOverlay = document.querySelector(".update");
+      
+          if (closeBtn && updateOverlay) {
+            closeBtn.addEventListener("click", () => {
+              updateOverlay.style.display = "none";
+            });
+          }
+        });
+      </script>
+      
+    <script>
+
+        
         document.addEventListener('DOMContentLoaded', () => {
   const slider = document.getElementById('slider');
   const sliderContainer = document.querySelector('.slider-container');
@@ -383,6 +438,91 @@
   startAutoMove();
 });
     </script>
+
+<script>
+    // Countdown Timer
+    const eventDate = new Date("2025-07-21T07:00:00").getTime();
+  
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+  
+      if (diff <= 0) return;
+  
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    };
+  
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  
+    // Google Calendar Add Button
+    document.querySelectorAll('.keep').forEach(button => {
+      button.addEventListener('click', function () {
+        const rawDate = this.dataset.date;   // e.g., "July 17, 2025"
+        const rawTime = this.dataset.time;   // e.g., "8:30am"
+        const title = this.dataset.title;
+        const location = this.dataset.location;
+  
+        if (!rawDate || !rawTime || !title || !location) {
+          alert("Missing event details.");
+          return;
+        }
+  
+        // Combine date and time into ISO-like format: YYYY-MM-DDTHH:mm
+        const parseDateTime = (dateStr, timeStr) => {
+          const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
+          const months = {
+            January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
+            July: 6, August: 7, September: 8, October: 9, November: 10, December: 11
+          };
+  
+          const month = months[monthStr];
+          const dayNum = parseInt(day);
+          const yearNum = parseInt(year);
+  
+          // Convert time to 24-hour
+          const match = timeStr.match(/^(\d{1,2}):(\d{2})(am|pm)$/i);
+          if (!match) return null;
+  
+          let [_, hour, minute, meridian] = match;
+          hour = parseInt(hour);
+          if (meridian.toLowerCase() === 'pm' && hour !== 12) hour += 12;
+          if (meridian.toLowerCase() === 'am' && hour === 12) hour = 0;
+  
+          return new Date(yearNum, month, dayNum, hour, parseInt(minute));
+        };
+  
+        const localStartDate = parseDateTime(rawDate, rawTime);
+        if (!localStartDate || isNaN(localStartDate.getTime())) {
+          alert("Invalid date or time format: " + rawDate + " " + rawTime);
+          return;
+        }
+  
+        const formatDate = (date) => {
+          const pad = (n) => n.toString().padStart(2, '0');
+          return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}00`;
+        };
+  
+        const start = formatDate(localStartDate);
+        const end = formatDate(new Date(localStartDate.getTime() + 60 * 60 * 1000)); // +1 hour
+  
+        const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&dates=${start}/${end}`;
+        
+        window.open(calendarUrl, '_blank');
+      });
+    });
+</script>
+
+
+  
 
 
     <script src="https://js.paystack.co/v1/inline.js"></script>
