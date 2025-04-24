@@ -103,7 +103,8 @@
 
     <div class="update">
         <video src="/images/Fire Burning Hot Sparks Rising Background Free Video.mp4" autoplay muted loop></video>
-        <div class="utext">
+        <div class="uptext">
+              <div class="utext">
           <h2 class="eventtop">Azusa 26</h2>
           <p>Every year, we gather with one heart and one spirit at Azasa, a sacred time of refreshing, revival, and revelation. It's more than a program — it’s a divine appointment where lives are transformed, faith is reignited, and destinies are realigned in God’s presence.  
           Come expectant. Leave changed.</p>
@@ -141,6 +142,8 @@
              <button class="closes">Close</button>
           </div>
         </div>
+        </div>
+      
       </div>
 
 
@@ -356,6 +359,52 @@
           }
         });
       </script>
+
+
+<script>
+    // Check if the popup has been shown today
+    const lastPopupDate = localStorage.getItem("lastPopupDate");
+    const today = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+  
+    if (lastPopupDate !== today) {
+      // Show the popup if it has not been shown today
+      setTimeout(() => {
+        document.querySelector('.update').classList.add("active");
+      }, 5000);
+    }
+  
+    // Handle close button click
+    document.querySelector('.closes').addEventListener('click', () => {
+      // Close the popup
+      document.querySelector('.update').style.display = 'none';
+  
+      // Set a flag in localStorage to prevent showing the popup again today
+      localStorage.setItem("lastPopupDate", today);
+    });
+  
+    // Countdown Timer
+    const eventDatee = new Date("2025-07-21T07:00:00").getTime();
+  
+    const updateCountdownn = () => {
+      const now = new Date().getTime();
+      const diff = eventDatee - now;
+  
+      if (diff <= 0) return;
+  
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    };
+  
+    setInterval(updateCountdownn, 1000);
+    updateCountdownn();
+  </script>
       
     <script>
 
