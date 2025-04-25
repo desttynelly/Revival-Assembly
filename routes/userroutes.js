@@ -16,7 +16,8 @@ const
   pserm,
   event,
   testi,
-  blog
+  blog,
+  contact
 
 
 
@@ -42,6 +43,7 @@ router.post('/sermon', upload, pserm);
 router.post('/event', upload, event);
 router.post('/blog', upload, blog);
 router.post('/testi', testi);
+router.post('/contact', contact);
 router.post('/give', give);
 router.post('/pictures', upload, Pictures);
 router.post('/quotes', upload, Quotes);

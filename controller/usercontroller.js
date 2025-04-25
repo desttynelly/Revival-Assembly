@@ -3,6 +3,7 @@
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
+const Contact = require('../models/Contact');
 const Give = require("../models/givemodel");
 const Lives = require("../models/Livesmodel");
 const Pserm = require("../models/Psermonmodel");
@@ -47,9 +48,9 @@ const handleImageUpload = (file) => {
 
 const give = async (req, res) => {
   try {
-    const { name, phonenumber, email, givingtype, amount, choose} = req.body;
+    const { name, phonenumber, email, givingtype, amount, choose, pastorname, transactionRef} = req.body;
 
-    if (!name || !phonenumber || !email || !givingtype || !amount || !choose ) {
+    if (!name || !phonenumber || !email || !givingtype || !amount || !choose || !transactionRef) {
       // res.render("fruit", {user: req.session.user})
       return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
     }
@@ -89,6 +90,8 @@ const give = async (req, res) => {
       givingtype,
       amount,
       choose,
+      pastorname,
+      transactionRef
     });
 
 
@@ -104,7 +107,9 @@ const give = async (req, res) => {
               phonenumber: user.phonenumber,
               givingtype: user.givingtype,
               amount: user.amount,
-              givingtype: user.givingtype,
+              choose: user.choose,
+              pastorname: user.pastorname,
+              transactionRef: user.transactionRef,
              
               
               // Add other fields as needed
@@ -243,7 +248,7 @@ const logIn = async (req, res) => {
       };
 
       // Send success response
-      res.render("admin/admin", { user: req.session.user});
+      res.redirect('/admin/admin');
 
   } catch (err) {
       res.status(500).json({ message: 'Server error', error: err.message });
@@ -406,6 +411,24 @@ const LiveS = async (req, res) => {
 
 };
 
+
+
+
+
+
+ const contact = async (req, res) => {
+  const { category, info, fullname, email } = req.body;
+
+  try {
+    const newContact = new Contact({ category, info, fullname, email });
+    await newContact.save();
+
+    res.redirect('/'); // or show a success message
+  } catch (err) {
+    console.error('Contact Form Error:', err);
+    res.status(500).send('Something went wrong. Please try again.');
+  }
+};
 
 
 
@@ -631,6 +654,7 @@ module.exports =
   pserm,
   event,
   testi,
-  blog
+  blog,
+  contact
  
 };

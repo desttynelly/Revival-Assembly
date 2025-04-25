@@ -2,9 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
+const User = require("./models/signup");
 const Pic = require('./models/picture');
+const Contact = require('./models/Contact');
 const LiveS = require('./models/Livesmodel');
 const Event = require('./models/eventmodel');
+const Give = require("./models/givemodel");
 const Testi = require("./models/testimony");
 const Pserm = require('./models/Psermonmodel');
 const Blog = require('./models/blogmodel');
@@ -183,24 +186,95 @@ app.get("/gallery", async (req, res) => {
 });
 
 
+// Admin Dashboard Route
+app.get('/admin/admin', async (req, res) => {
+  try {
+    // Ensure user is logged in
+    if (!req.session.user) {
+      return res.redirect('/login');
+    }
 
+    const user = await User.findById(req.params.userId);
 
-app.get('/admin/admin',(req,res)=>{
-  res.render('admin/admin')
+    // Fetch from Give and Contact models
+    const gives = await Give.find().sort({ createdAt: -1 });
+    const contacts = await Contact.find().sort({ createdAt: -1 });
+
+    // Format Give updates
+    const giveUpdates = gives.map(g => ({
+      id: g._id,
+      type: 'give',
+      name: g.name,
+      amount: g.amount,
+      message: g.givingtype,
+      choose: g.choose,
+      pastorname: g.pastorname,
+      viewed: g.viewed,
+      createdAt: g.createdAt || g.date
+    }));
+
+    // Format Contact updates (testimony, prayer, enquiry, application)
+    const contactUpdates = contacts.map(c => ({
+      id: c._id,
+      type: 'contact',
+      name: c.fullname,
+      message: c.info,
+      email: c.email,
+      category: c.category,
+      viewed: c.viewed,
+      createdAt: c.createdAt
+    }));
+
+    // Merge & sort all updates
+    const updates = [...giveUpdates, ...contactUpdates].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
+    // Count unseen
+    const unseenCount = updates.filter(u => !u.viewed).length;
+
+    // Pass updates, unseenCount and user info to template
+    res.render('admin/admin', {
+      updates,
+      unseenCount,
+      user: req.session.user,
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.render('amin/admin', {
+      updates: [],
+      unseenCount: 0,
+      user: req.session.user || null
+    });
+  }
 });
 
-app.get("/admin/admin", async (req, res) => {
-
-      // Check if session exists
-      if (!req.session.user) {
-          return res.redirect("/login"); // Redirect to login page
-      }
-
-      // Fetch user data
-      const signup = await Just.find(); 
-      res.render("admin/admin", { signup });
-  
+// Logout Route
+app.get('/admin/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).send('Unable to logout');
+    }
+    res.redirect('/login'); // Redirect to login after logout
+  });
 });
+
+
+app.post('/admin/mark-as-seen', async (req, res) => {
+  try {
+    await Give.updateMany({ viewed: false }, { $set: { viewed: true } });
+    await Contact.updateMany({ viewed: false }, { $set: { viewed: true } });
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
+
+
 
 
 app.get('/login', (req, res) => {

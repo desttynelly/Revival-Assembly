@@ -51,50 +51,7 @@
 
 
 
-    <div class="giving">
-        
-        <form >
-
-            <div class="close">
-                <i class="fa fa-close"></i>
-            </div>
-
-
-            <label for="name">Full Name:</label>
-            <input type="text" name="name" id="name" placeholder="fullname"><br>
-
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="email"><br>
-
-            <label for="phonenumber">Phone Number (optional)</label>
-            <input type="text" name="phonenumber" id="number" placeholder="phone number"><br>
-
-            <label for="amount">Amount</label>
-            <input type="text" name="amount" id="amount" placeholder="Enter amount"><br>
-
-            <label for="type">Giving Type</label>
-            <select name="givingtype" id="type" onchange="changeBgColor()">
-                <option value="empty">--select your giving type</option>
-                <option value="offering">Offering</option>
-                <option value="tithe">Tithe</option>
-                <option value="seed"> Seed</option>
-            </select> <br>
-
-            <section class="thanks">
-                <select name="choose" id="choose">
-                    <option value="Empty">--To where</option>
-                    <option value="S Pastor">Pastor</option>
-                    <option value="orphange">Orphange</option>
-                    <option value="widows">Widows</option>
-                </select>
-            </section>
-
-            <div class="center">
-                <button class="send" type="button" onclick="payWithPaystack()">Send</button>
-            </div>
-            
-        </form>
-    </div>
+    <%- include("_giving") %>
 
 
 
@@ -125,7 +82,7 @@
                     </div>
             </div>
             <!-- </div> -->
-            <form action="">
+            <form action="/api/auth/contact" method="post">
 
                 <label for="categoty">Contact Category:</label>
                 <select name="category" id="cate-sele">

@@ -6,14 +6,16 @@
     <link rel="icon" href="/images/Revival created logo.png">
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/all.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Revival Abuja</title>
 </head>
 <body>
 
+
+  
   <div class="inputs">
 
             <div class="sermon">
@@ -208,10 +210,123 @@
 
         <div class="dashtop">
 
-            <p class="headp">Dashboard</p>
 
+            <p class="headpp">Dashboard</p>
+
+
+            <div class="icons">
+                <div class="notification-icon">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge" style="<%= unseenCount > 0 ? 'display: inline-block;' : 'display: none;' %>">
+                      <%= unseenCount %>
+                    </span>
+                  </div>
+                  
+                  
+                  <div class="profile">
+                    <i class="fa fa-circle-user"></i>
+                    <p>Revival Assembly</p>
+                    <div class="profile-dropdown">
+                      <div class="dropdown-item email">
+                        <i class="fas fa-envelope"></i>
+                        <span><%= user.email %></span>
+                      </div>
+                      <div class="dropdown-item logout">
+                        <button class="logout-btn">
+                          <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Confirmation Popup -->
+                  <div class="logout-confirmation">
+                    <div class="confirmation-content">
+                      <h3>Are you sure you want to logout?</h3>
+                      <div class="confirmation-buttons">
+                        <button class="btn-yes">Yes</button>
+                        <button class="btn-no">No</button>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                
+                
+            </div>
             
         </div>
+
+
+
+        
+       
+          
+        <div class="notification-popup">
+            <div class="notification-header">
+              <h2>Notifications</h2>
+              <button class="close-notification"><i class="fa fa-close"></i></button>
+            </div>
+          
+            <div class="notification-list">
+                <% if (updates && updates.length > 0) { %>
+                  <% updates.forEach(function (item) { %>
+                    <div class="notification-item">
+                      <div class="notification-icon-type">
+                        <% if (item.type === 'give') { %>
+                          <i class="fas fa-hand-holding-heart"></i>
+                        <% } else if (item.type === 'contact') { %>
+                          <i class="fas fa-envelope"></i>
+                        <% } else { %>
+                          <i class="fas fa-bell"></i>
+                        <% } %>
+                      </div>
+                      <div class="notification-content">
+                        <p><strong>
+                          <%= item.type === 'give' ? 'New Giving Received' : 'New Contact Message' %>
+                        </strong></p>
+              
+                        <% if (item.message) { %>
+                          <p><%= item.message %></p>
+                        <% } %>
+              
+                        <% if (item.category) { %>
+                          <p><strong>Category:</strong> <%= item.category %></p>
+                        <% } %>
+              
+                        <% if (item.amount) { %>
+                          <p><strong>Amount:</strong> ₦<%= item.amount %></p>
+                        <% } %>
+              
+                        <% if (item.choose) { %>
+                          <p><strong>Option:</strong> <%= item.choose %></p>
+                        <% } %>
+              
+                        <% if (item.pastorname) { %>
+                          <p><strong>Pastor:</strong> <%= item.pastorname %></p>
+                        <% } %>
+              
+                        <% if (item.name) { %>
+                          <p><strong>By:</strong> <%= item.name %></p>
+                        <% } %>
+              
+                        <% if (item.email) { %>
+                          <p><strong>Email:</strong> <%= item.email %></p>
+                        <% } %>
+              
+                        <span class="notification-time">
+                          <%= new Date(item.createdAt).toLocaleString() %>
+                        </span>
+                      </div>
+                    </div>
+                  <% }); %>
+                <% } else { %>
+                  <p style="text-align: center;">No recent updates yet.</p>
+                <% } %>
+              </div>
+              
+          </div>
+          
+          
 
 
 
@@ -300,7 +415,54 @@
 
    
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const profile = document.querySelector('.profile');
+  const dropdown = document.querySelector('.profile-dropdown');
+  const logoutBtn = document.querySelector('.logout-btn');
+  const confirmationPopup = document.querySelector('.logout-confirmation');
+  const btnYes = document.querySelector('.btn-yes');
+  const btnNo = document.querySelector('.btn-no');
 
+  // Toggle dropdown on profile click
+  profile.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('active');
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!profile.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+
+  // Show confirmation popup on logout click
+  logoutBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent dropdown from closing
+    confirmationPopup.classList.add('active');
+    dropdown.classList.remove('active'); // Close dropdown
+  });
+
+  // Confirm logout
+  btnYes.addEventListener('click', () => {
+    // Replace with your actual logout logic
+    window.location.href = '/admin/logout';
+  });
+
+  // Cancel logout
+  btnNo.addEventListener('click', () => {
+    confirmationPopup.classList.remove('active');
+  });
+
+  // Close popup when clicking outside
+  confirmationPopup.addEventListener('click', (e) => {
+    if (e.target === confirmationPopup) {
+      confirmationPopup.classList.remove('active');
+    }
+  });
+});
+</script>
       <script>
 
         //live Sermon js
@@ -359,6 +521,30 @@
 <script>
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const bellIcon = document.querySelector('.notification-icon');
+  const notificationPopup = document.querySelector('.notification-popup');
+  const closeButton = document.querySelector('.close-notification');
+
+  // Toggle notification popup on bell click
+  bellIcon.addEventListener('click', () => {
+    notificationPopup.classList.toggle('active');
+  });
+
+  // Close notification popup on close button click
+  closeButton.addEventListener('click', () => {
+    notificationPopup.classList.remove('active');
+  });
+
+  // Close popup when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!notificationPopup.contains(e.target) && !bellIcon.contains(e.target)) {
+      notificationPopup.classList.remove('active');
+    }
+  });
+});
+
+
 
 
 
@@ -372,11 +558,25 @@
 
 </script>
 
+<script>
+    document.querySelector('.notification-icon').addEventListener('click', () => {
+        fetch('/admin/mark-as-seen', {
+  method: 'POST'
+}).then(res => {
+  if (res.ok) {
+    const badge = document.querySelector('.notification-icon .badge');
+    if (badge) badge.style.display = 'none';
+  }
+});
+
+    });
+  </script>
+  
 
 
 
 
 
-    <script src="/js/all.js"></script>
+    <!-- <script src="/js/all.js"></script> -->
 </body>
 </html>

@@ -1,0 +1,47 @@
+<div class="giving">
+        
+    <form >
+
+        <div class="close">
+            <i class="fa fa-close"></i>
+        </div>
+
+
+        <label for="name">Full Name:</label>
+        <input type="text" name="name" id="name" placeholder="fullname" required><br>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="email" required><br>
+
+        <label for="phonenumber">Phone Number (optional)</label>
+        <input type="text" name="phonenumber" id="number" placeholder="phone number"><br>
+
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" placeholder="Enter amount"><br>
+
+        <label for="type">Giving Type</label>
+        <select name="givingtype" id="type" onchange="changeBgColor()">
+            <option value="empty">--select your giving type</option>
+            <option value="offering">Offering</option>
+            <option value="tithe">Tithe</option>
+            <option value="seed"> Seed</option>
+        </select> <br> <br>
+
+        <label class="where" for="where to">Choose where it should be sent to</label>
+        <section class="thanks">
+            <select name="choose" id="choose" onchange="changeBgColor2()">
+                <option value="Empty">--To where</option>
+                <option value="S Pastor">Pastor</option>
+                <option value="orphange">Orphange</option>
+                <option value="widows">Widows</option>
+            </select>
+        </section>
+
+        <label class="pastor" for="pastor-name">Pastor Name:</label>
+        <input class="pastori" type="text" name="pastorname" id="pastor-name" placeholder="Pastor Name" required>
+
+        <div class="center">
+            <button class="send" type="button" onclick="payWithPaystack()">Send</button>
+        </div>
+    </form>
+</div>

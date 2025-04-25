@@ -31,7 +31,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
         default: undefined
-    }
+    },
+    pastorname: {
+        type: String,
+        required: false,
+        default: undefined
+    },
+    transactionRef: {
+        type: String,
+        required: true,
+    },
+    viewed: {
+        type: Boolean,
+        default: false
+      }
+      
     
 }, {
     timestamps: true

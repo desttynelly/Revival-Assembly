@@ -8,10 +8,11 @@
         let amount = document.getElementById("amount").value;
         let givingtype = document.getElementById("type").value;
         let choose = document.getElementById("choose").value;
+        let pastorname = document.getElementById("pastor-name").value;
 
         // Validate inputs
-        if (!name || !email || !amount || givingtype || choose) {
-          
+        if (!name || !email || !amount || givingtype || choose || pastorname) {
+          alert("Please fill in all fields.");
         }
 
         let handler = PaystackPop.setup({
@@ -32,7 +33,8 @@
                         amount,
                         givingtype,
                         choose,
-                        transactionRef: response.reference // Store transaction reference
+                        transactionRef: response.reference, // Store transaction reference
+                        pastorname
                     })
                 })
                 .then(res => res.json())

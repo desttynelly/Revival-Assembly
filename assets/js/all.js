@@ -21,6 +21,9 @@ document.querySelector(".fa").addEventListener("click", function(){
 })
 
 
+let where = document.querySelector(".where");
+where.style.display = "none"; 
+
 function changeBgColor(){
 
        let seed = document.querySelector("#type").value;
@@ -28,8 +31,31 @@ function changeBgColor(){
 
        if( seed == 'seed'){
         document.querySelector("#choose").classList.add("active")
+        where.style.display = "flex"; 
        }else{
         document.querySelector("#choose").classList.remove("active")
+        where.style.display = "none"; 
+       }
+}
+
+
+let pastor = document.querySelector(".pastor");
+pastor.style.display = "none"; 
+
+let pastori = document.querySelector(".pastori");
+pastori.style.display = "none"; 
+
+function changeBgColor2(){
+
+       let pas = document.querySelector("#choose").value;
+
+
+       if( pas == 'S Pastor'){
+        pastor.style.display = "flex"; 
+        pastori.style.display = "flex";
+       }else{
+        pastor.style.display = "none"; 
+        pastori.style.display = "none"; 
        }
 }
     
