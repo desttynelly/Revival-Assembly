@@ -129,7 +129,7 @@
 
 <%- include("_footer") %>
 
-<script>
+<!-- <script>
     document.querySelectorAll('.keep').forEach(button => {
       button.addEventListener('click', function () {
         const rawDate = this.dataset.date;   // e.g., "July 17, 2025"
@@ -187,9 +187,29 @@
       });
     });
   </script>
+   -->
   
   
   
+   <script>
+    document.querySelectorAll('.keep').forEach(button => {
+        button.addEventListener('click', () => {
+            const date = encodeURIComponent(button.dataset.date);
+            const time = encodeURIComponent(button.dataset.time);
+            const title = encodeURIComponent(button.dataset.title);
+            const location = encodeURIComponent(button.dataset.location);
+            const desc = encodeURIComponent(button.dataset.desc);
+    
+            // Build the query string
+            const queryString = `?date=${date}&time=${time}&title=${title}&location=${location}&desc=${desc}`;
+    
+            // Redirect to the other site with the data
+            // const userId = 'your_user_id_here'; // Replace dynamically if you know it
+            window.location.href = `http://localhost:4900/createe/${queryString}`;
+        });
+    });
+    </script>
+    
   
 
 

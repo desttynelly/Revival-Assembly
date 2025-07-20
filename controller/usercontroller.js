@@ -438,8 +438,7 @@ const pserm = async (req, res) => {
     console.log("FILES:", req.files);
   console.log("BODY:", req.body);
 
-  const { title, preacher, ylink } = req.body;
-  const image1 = req.files?.image1 ? req.files.image1[0] : null;
+  const { title, preacher, ylink } = req.body;z2
 
 
 
